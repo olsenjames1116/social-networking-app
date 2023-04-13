@@ -7,7 +7,7 @@ export const accountMenuSlice = createSlice({
   },
   reducers: {
     displayMenu: (state) => {
-      state.display = true;
+      state.display = !state.display;
     },
     hideMenu: (state) => {
       state.display = false;

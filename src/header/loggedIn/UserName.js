@@ -1,5 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { hideMenu } from '../../redux/state/accountMenuSlice';
 
 export default function UserName() {
-  return <li className="userName">{localStorage.getItem('name')}</li>;
+  const dispatch = useDispatch();
+
+  return (
+    <li className="userName" onClick={() => dispatch(hideMenu())}>
+      {localStorage.getItem('name')}
+    </li>
+  );
 }
