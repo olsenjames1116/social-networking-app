@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { isLoggedInReducer } from './state';
+import { isLoggedInReducer, accountMenuReducer } from './state';
 
 export default configureStore({
   reducer: {
-    isLoggedIn: isLoggedInReducer
+    isLoggedIn: isLoggedInReducer,
+    accountMenu: accountMenuReducer
   }
 });

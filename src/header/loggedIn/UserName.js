@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function UserName() {
-  return <span className="userName">{localStorage.getItem('name')}</span>;
+  return <li className="userName">{localStorage.getItem('name')}</li>;
 }
