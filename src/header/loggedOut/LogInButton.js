@@ -10,7 +10,11 @@ export default function LogInButton() {
   const signInWithGoogle = async () => {
     try {
       const response = await signInWithPopup(auth, provider);
-      console.log(response);
+
+      localStorage.setItem('id', response.user.uid);
+      localStorage.setItem('name', response.user.displayName);
+      localStorage.setItem('image', response.user.photoURL);
+
       dispatch(logIn());
     } catch (error) {
       console.log(error);
