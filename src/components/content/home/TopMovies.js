@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTopMovies } from '../../../redux/state/topMoviesSlice';
-import Movie from './Movie';
+import Movie from './movieData/Movie';
 
 export default function TopMovies() {
   const topMovies = useSelector((state) => state.topMovies.value);
