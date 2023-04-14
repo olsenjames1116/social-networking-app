@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { hideMenu } from '../../redux/state/accountMenuSlice';
+import { hideMenu } from '../../../redux/state/accountMenuSlice';
 
 export default function UserImage() {
   const dispatch = useDispatch();

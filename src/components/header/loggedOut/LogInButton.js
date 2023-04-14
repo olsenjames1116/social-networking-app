@@ -1,8 +1,8 @@
 import React from 'react';
 import { signInWithPopup } from 'firebase/auth';
-import { auth, provider } from '../../firebase';
+import { auth, provider } from '../../../firebase';
 import { useDispatch } from 'react-redux';
-import { logIn } from '../../redux/state/isLoggedInSlice';
+import { logIn } from '../../../redux/state/isLoggedInSlice';
 
 export default function LogInButton() {
   const dispatch = useDispatch();

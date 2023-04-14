@@ -1,7 +1,7 @@
 import React from 'react';
-import { menuIcon } from '../../images/index';
+import { menuIcon } from '../../../images/index';
 import { useDispatch } from 'react-redux';
-import { displayMenu } from '../../redux/state/accountMenuSlice';
+import { displayMenu } from '../../../redux/state/accountMenuSlice';
 
 export default function AccountMenuIcon() {
   const dispatch = useDispatch();
