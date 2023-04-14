@@ -27,10 +27,13 @@ export default function TopMovies() {
   }, []);
 
   return (
-    <ul className="topMovies">
-      {topMovies.map((movie) => (
-        <Movie key={movie.id} movie={movie} />
-      ))}
-    </ul>
+    <div className="topMovies">
+      <h2>Top Movies</h2>
+      <ul className="topMovies">
+        {topMovies.map((movie) => (
+          <Movie key={movie.id} movie={movie} />
+        ))}
+      </ul>
+    </div>
   );
 }
