@@ -17,7 +17,7 @@ export default function TopMovies() {
 
         console.log(data.results);
 
-        dispatch(setTopMovies(data.results));
+        dispatch(setTopMovies(data.results.slice(0, 10)));
       } catch (error) {
         console.log(error);
       }
