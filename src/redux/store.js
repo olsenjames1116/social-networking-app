@@ -3,7 +3,8 @@ import {
   isLoggedInReducer,
   accountMenuReducer,
   topMoviesReducer,
-  mostPopularReducer
+  mostPopularReducer,
+  upcomingReducer
 } from './state';
 
 export default configureStore({
@@ -11,6 +12,7 @@ export default configureStore({
     isLoggedIn: isLoggedInReducer,
     accountMenu: accountMenuReducer,
     topMovies: topMoviesReducer,
-    mostPopular: mostPopularReducer
+    mostPopular: mostPopularReducer,
+    upcoming: upcomingReducer
   }
 });
