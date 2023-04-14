@@ -1,10 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { isLoggedInReducer, accountMenuReducer, topMoviesReducer } from './state';
+import {
+  isLoggedInReducer,
+  accountMenuReducer,
+  topMoviesReducer,
+  mostPopularReducer
+} from './state';
 
 export default configureStore({
   reducer: {
     isLoggedIn: isLoggedInReducer,
     accountMenu: accountMenuReducer,
-    topMovies: topMoviesReducer
+    topMovies: topMoviesReducer,
+    mostPopular: mostPopularReducer
   }
 });
