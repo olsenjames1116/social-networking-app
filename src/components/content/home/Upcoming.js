@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUpcoming } from '../../../redux/state/upcomingSlice';
 import Movie from './movieData/Movie';
+import { Link } from 'react-router-dom';
 
 export default function Upcoming() {
   const upcoming = useSelector((state) => state.upcoming.value);
@@ -39,9 +40,13 @@ export default function Upcoming() {
     <div className="upcoming">
       <h2>Upcoming</h2>
       <ul className="upcoming">
-        {upcoming.map((movie) => (
-          <Movie key={movie.id} movie={movie} />
-        ))}
+        {upcoming.map((movie) => {
+          return (
+            <Link key={movie.id} to={`/${movie.id}`}>
+              <Movie key={movie.id} movie={movie} />
+            </Link>
+          );
+        })}
       </ul>
     </div>
   );

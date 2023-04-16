@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTopMovies } from '../../../redux/state/topMoviesSlice';
 import Movie from './movieData/Movie';
+import { Link } from 'react-router-dom';
 
 export default function TopMovies() {
   const topMovies = useSelector((state) => state.topMovies.value);
@@ -30,9 +31,13 @@ export default function TopMovies() {
     <div className="topMovies">
       <h2>Top Movies</h2>
       <ul className="topMovies">
-        {topMovies.map((movie) => (
-          <Movie key={movie.id} movie={movie} />
-        ))}
+        {topMovies.map((movie) => {
+          return (
+            <Link key={movie.id} to={`/${movie.id}`}>
+              <Movie key={movie.id} movie={movie} />
+            </Link>
+          );
+        })}
       </ul>
     </div>
   );
