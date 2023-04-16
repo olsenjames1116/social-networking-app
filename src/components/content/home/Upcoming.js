@@ -7,6 +7,13 @@ export default function Upcoming() {
   const upcoming = useSelector((state) => state.upcoming.value);
   const dispatch = useDispatch();
 
+  const sortResults = (results) => {
+    results.sort((a, b) => {
+      if (a.release_date > b.release_date) return -1;
+      return 1;
+    });
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -14,6 +21,8 @@ export default function Upcoming() {
           'https://api.themoviedb.org/3/movie/upcoming?api_key=4f9b51028fe2871ccd482413fd149522'
         );
         const data = await response.json();
+
+        sortResults(data.results);
 
         console.log(data.results);
 
