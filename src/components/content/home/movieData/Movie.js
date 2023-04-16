@@ -6,7 +6,7 @@ import Title from './Title';
 
 export default function Movie({ movie }) {
   return (
-    <li key={movie.id}>
+    <li>
       <MovieImage image={movie.poster_path} />
       <Score score={movie.vote_average} count={movie.vote_count} />
       <Title title={movie.title} />

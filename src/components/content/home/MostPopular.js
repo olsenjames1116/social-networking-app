@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMostPopular } from '../../../redux/state/mostPopularSlice';
 import Movie from './movieData/Movie';
+import { Link } from 'react-router-dom';
 
 export default function MostPopular() {
   const mostPopular = useSelector((state) => state.mostPopular.value);
@@ -30,9 +31,13 @@ export default function MostPopular() {
     <div className="mostPopular">
       <h2>Most Popular</h2>
       <ul className="mostPopular">
-        {mostPopular.map((movie) => (
-          <Movie key={movie.id} movie={movie} />
-        ))}
+        {mostPopular.map((movie) => {
+          return (
+            <Link key={movie.id} to={`/${movie.id}`}>
+              <Movie movie={movie} />
+            </Link>
+          );
+        })}
       </ul>
     </div>
   );
