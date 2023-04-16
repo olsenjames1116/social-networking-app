@@ -7,7 +7,7 @@ export default function Logo() {
 
   return (
     <div className="logo" onClick={() => dispatch(hideMenu())}>
-      <span>CineFile</span>
+      CineFile
     </div>
   );
 }
