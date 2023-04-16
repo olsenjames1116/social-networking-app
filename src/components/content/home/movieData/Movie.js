@@ -8,7 +8,7 @@ export default function Movie({ movie }) {
   return (
     <li key={movie.id}>
       <MovieImage image={movie.poster_path} />
-      <Score />
+      <Score score={movie.vote_average} count={movie.vote_count} />
       <Title title={movie.title} />
     </li>
   );
