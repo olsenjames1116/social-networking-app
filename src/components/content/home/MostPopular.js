@@ -33,7 +33,7 @@ export default function MostPopular() {
       <ul className="mostPopular">
         {mostPopular.map((movie) => {
           return (
-            <Link key={movie.id} to={`/${movie.id}`}>
+            <Link key={movie.id} to={`/most_popular/${movie.id}`}>
               <Movie movie={movie} />
             </Link>
           );

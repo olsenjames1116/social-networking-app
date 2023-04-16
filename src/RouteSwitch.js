@@ -8,7 +8,7 @@ export default function RouteSwitch() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/:id" element={<MoviePage />} />
+        <Route path="/:category/:id" element={<MoviePage />} />
       </Routes>
     </BrowserRouter>
   );
