@@ -15,6 +15,9 @@ export default function MoviePage() {
     const mostPopular = useSelector((state) => state.mostPopular.value);
     console.log(mostPopular);
     findMovie(mostPopular);
+  } else if (category === 'top_rated') {
+    const topMovies = useSelector((state) => state.topMovies.value);
+    findMovie(topMovies);
   }
 
   return <div className="moviePage"></div>;

@@ -33,7 +33,7 @@ export default function TopMovies() {
       <ul className="topMovies">
         {topMovies.map((movie) => {
           return (
-            <Link key={movie.id} to={`/${movie.id}`}>
+            <Link key={movie.id} to={`/top_rated/${movie.id}`}>
               <Movie key={movie.id} movie={movie} />
             </Link>
           );
