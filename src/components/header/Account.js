@@ -7,7 +7,7 @@ export default function Account() {
   const isLoggedIn = useSelector((state) => state.isLoggedIn.value);
 
   return (
-    <div className="account">
+    <div className="account" data-testid="account">
       {!isLoggedIn && <LogInButton />}
       {isLoggedIn && <AccountInfo />}
     </div>
