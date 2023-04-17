@@ -18,6 +18,9 @@ export default function MoviePage() {
   } else if (category === 'top_rated') {
     const topMovies = useSelector((state) => state.topMovies.value);
     findMovie(topMovies);
+  } else {
+    const trending = useSelector((state) => state.trending.value);
+    findMovie(trending);
   }
 
   return <div className="moviePage"></div>;

@@ -1,7 +1,7 @@
 import React from 'react';
 import TopMovies from './TopMovies';
 import MostPopular from './MostPopular';
-import Upcoming from './Upcoming';
+import Trending from './Trending';
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       Home
       <TopMovies />
       <MostPopular />
-      <Upcoming />
+      <Trending />
     </div>
   );
 }
