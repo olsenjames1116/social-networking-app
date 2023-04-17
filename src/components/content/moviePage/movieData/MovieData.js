@@ -9,6 +9,7 @@ export default function MovieData({ movie }) {
     <div className="movie">
       <MovieImage image={movie.poster_path} />
       <Title title={movie.title} />
+      <Score score={movie.vote_average} count={movie.vote_count} />
     </div>
   );
 }
