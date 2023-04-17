@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import MovieData from './movieData/MovieData';
 
 export default function MoviePage() {
   const { id, category } = useParams();
@@ -23,5 +24,9 @@ export default function MoviePage() {
     findMovie(trending);
   }
 
-  return <div className="moviePage"></div>;
+  return (
+    <div className="moviePage">
+      <MovieData movie={movie} />
+    </div>
+  );
 }
