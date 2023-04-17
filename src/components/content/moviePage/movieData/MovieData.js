@@ -5,13 +5,15 @@ import Title from '../../movie/Title';
 import Score from '../../movie/Score';
 import Runtime from './Runtime';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMovie } from '../../../../redux/state/movieSlice';
+import { setMovie, clearMovie } from '../../../../redux/state/movieSlice';
 
 export default function MovieData({ id }) {
   const movie = useSelector((state) => state.movie.value);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(clearMovie());
+
     const fetchData = async () => {
       try {
         const response = await fetch(
