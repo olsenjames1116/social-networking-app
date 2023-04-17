@@ -4,7 +4,8 @@ import {
   accountMenuReducer,
   topMoviesReducer,
   mostPopularReducer,
-  trendingReducer
+  trendingReducer,
+  movieReducer
 } from './state';
 
 export default configureStore({
@@ -13,6 +14,7 @@ export default configureStore({
     accountMenu: accountMenuReducer,
     topMovies: topMoviesReducer,
     mostPopular: mostPopularReducer,
-    trending: trendingReducer
+    trending: trendingReducer,
+    movie: movieReducer
   }
 });

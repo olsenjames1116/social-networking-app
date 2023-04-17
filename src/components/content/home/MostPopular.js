@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMostPopular } from '../../../redux/state/mostPopularSlice';
-import Movie from './movie/Movie';
+import Movie from '../movie/Movie';
 import { Link } from 'react-router-dom';
 
 export default function MostPopular() {
