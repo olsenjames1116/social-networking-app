@@ -9,7 +9,7 @@ export default function AccountInfo() {
   const accountMenu = useSelector((state) => state.accountMenu.display);
 
   return (
-    <ul className="accountInfo">
+    <ul className="accountInfo" data-testid="accountInfo">
       <UserImage />
       <UserName />
       <AccountMenuIcon />

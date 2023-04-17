@@ -13,7 +13,13 @@ export default function AccountMenuIcon() {
 
   return (
     <li className="accountMenuIcon">
-      <img style={style} src={menuIcon} alt="A menu icon" onClick={() => dispatch(displayMenu())} />
+      <img
+        style={style}
+        src={menuIcon}
+        alt="A menu icon"
+        onClick={() => dispatch(displayMenu())}
+        data-testid="accountMenuIcon"
+      />
     </li>
   );
 }
