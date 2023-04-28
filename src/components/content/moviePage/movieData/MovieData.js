@@ -6,6 +6,7 @@ import Score from '../../movie/Score';
 import Runtime from './Runtime';
 import ReleaseDate from './ReleaseDate';
 import Overview from './Overview';
+import Genre from './Genre';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMovie, clearMovie } from '../../../../redux/state/movieSlice';
 
@@ -43,6 +44,7 @@ export default function MovieData({ id }) {
       <Runtime runtime={movie.runtime} />
       <ReleaseDate date={movie.release_date} />
       <Overview overview={movie.overview} />
+      <Genre genres={movie.genres} />
     </div>
   );
 }
