@@ -7,6 +7,7 @@ import Runtime from './Runtime';
 import ReleaseDate from './ReleaseDate';
 import Overview from './Overview';
 import Genre from './Genre';
+import Languages from './Languages';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMovie, clearMovie } from '../../../../redux/state/movieSlice';
 
@@ -45,6 +46,7 @@ export default function MovieData({ id }) {
       <ReleaseDate date={movie.release_date} />
       <Overview overview={movie.overview} />
       <Genre genres={movie.genres} />
+      <Languages languages={movie.spoken_languages} />
     </div>
   );
 }
