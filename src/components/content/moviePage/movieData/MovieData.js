@@ -5,6 +5,7 @@ import Title from '../../movie/Title';
 import Score from '../../movie/Score';
 import Runtime from './Runtime';
 import ReleaseDate from './ReleaseDate';
+import Overview from './Overview';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMovie, clearMovie } from '../../../../redux/state/movieSlice';
 
@@ -41,6 +42,7 @@ export default function MovieData({ id }) {
       <Score score={movie.vote_average} count={movie.vote_count} />
       <Runtime runtime={movie.runtime} />
       <ReleaseDate date={movie.release_date} />
+      <Overview overview={movie.overview} />
     </div>
   );
 }
