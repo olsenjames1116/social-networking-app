@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function ReleaseDate({ date }) {
   const formatDate = () => {
-    const dateArray = date.split('-');
+    const dateArray = date ? date.split('-') : [];
     return dateArray[0];
   };
 

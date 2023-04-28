@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 export default function Score({ score, count }) {
   const formatScore = () => {
-    return Math.round(score * 10) / 10;
+    const roundedScore = Math.round(score * 10) / 10;
+    return `${roundedScore}/10 (${count})`;
   };
 
-  return <p>{`${formatScore()}/10 (${count})`}</p>;
+  return <p>{formatScore()}</p>;
 }
 
 Score.propTypes = {
