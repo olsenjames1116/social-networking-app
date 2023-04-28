@@ -8,13 +8,6 @@ export default function Trending() {
   const trending = useSelector((state) => state.trending.value);
   const dispatch = useDispatch();
 
-  // const sortResults = (results) => {
-  //   results.sort((a, b) => {
-  //     if (a.release_date > b.release_date) return -1;
-  //     return 1;
-  //   });
-  // };
-
   useEffect(() => {
     const fetchData = async () => {
       try {
