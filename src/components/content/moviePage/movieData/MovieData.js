@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Title from '../../movie/Title';
 import Score from '../../movie/Score';
 import Runtime from './Runtime';
+import ReleaseDate from './ReleaseDate';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMovie, clearMovie } from '../../../../redux/state/movieSlice';
 
@@ -39,6 +40,7 @@ export default function MovieData({ id }) {
       <Title title={movie.title} />
       <Score score={movie.vote_average} count={movie.vote_count} />
       <Runtime runtime={movie.runtime} />
+      <ReleaseDate date={movie.release_date} />
     </div>
   );
 }
