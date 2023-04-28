@@ -23,8 +23,6 @@ export default function Trending() {
         );
         const data = await response.json();
 
-        // sortResults(data.results);
-
         console.log(data.results);
 
         dispatch(setTrending(data.results.slice(0, 10)));
@@ -42,7 +40,7 @@ export default function Trending() {
       <ul className="trending">
         {trending.map((movie) => {
           return (
-            <Link key={movie.id} to={`/trending/${movie.id}`}>
+            <Link key={movie.id} to={`/${movie.id}`}>
               <Movie key={movie.id} movie={movie} />
             </Link>
           );
