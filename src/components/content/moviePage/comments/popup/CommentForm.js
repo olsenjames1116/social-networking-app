@@ -17,18 +17,58 @@ export default function CommentForm() {
     dispatch(setCharacterCount(commentLength));
   };
 
+  const resetValidity = () => {
+    const commentInput = document.querySelector('textarea#comment');
+
+    commentInput.setCustomValidity('');
+  };
+
+  const handleChange = () => {
+    countCharacters();
+    resetValidity();
+  };
+
+  const displayErrorMessage = () => {
+    console.log('invalid input');
+    const commentInput = document.querySelector('textarea#comment');
+
+    if (commentInput.validity.valueMissing) {
+      commentInput.setCustomValidity('Please say something!');
+      commentInput.reportValidity();
+    }
+  };
+
+  const validateComment = (event) => {
+    event.preventDefault();
+
+    const commentInput = document.querySelector('textarea#comment');
+    const comment = commentInput.value;
+
+    const form = document.querySelector('form');
+
+    if (form.checkValidity()) {
+      console.log(comment);
+    } else {
+      displayErrorMessage();
+    }
+  };
+
   return (
-    <form>
+    <form noValidate>
       <textarea
         id="comment"
         placeholder="What's on your mind?"
         rows="8"
         cols="50"
         maxLength="250"
+        required
         style={style}
-        onChange={() => countCharacters()}
+        onChange={() => handleChange()}
       />
       <CharacterCount />
+      <button type="submit" onClick={(event) => validateComment(event)}>
+        Post
+      </button>
     </form>
   );
 }
