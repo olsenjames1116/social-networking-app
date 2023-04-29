@@ -11,5 +11,9 @@ export default function Popup() {
     width: '50%'
   };
 
-  return <div className="popup"></div>;
+  return (
+    <div className="popup" style={style}>
+      Popup
+    </div>
+  );
 }

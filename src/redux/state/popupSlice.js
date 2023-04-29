@@ -6,8 +6,12 @@ export const popupSlice = createSlice({
     value: false
   },
   reducers: {
-    displayPopup: (state) => !state.value,
-    hidePopup: (state) => !state.value
+    displayPopup: (state) => {
+      state.value = !state.value;
+    },
+    hidePopup: (state) => {
+      state.value = !state.value;
+    }
   }
 });
 
