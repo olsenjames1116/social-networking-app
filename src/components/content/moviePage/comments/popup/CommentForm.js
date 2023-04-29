@@ -2,6 +2,7 @@ import React from 'react';
 import CharacterCount from './CharacterCount';
 import { useDispatch } from 'react-redux';
 import { setCharacterCount } from '../../../../../redux/state/characterCountSlice';
+import { hidePopup } from '../../../../../redux/state/popupSlice';
 
 export default function CommentForm() {
   const dispatch = useDispatch();
@@ -48,6 +49,8 @@ export default function CommentForm() {
 
     if (form.checkValidity()) {
       console.log(comment);
+      dispatch(hidePopup());
+      alert('Your comment has been posted!');
     } else {
       displayErrorMessage();
     }
