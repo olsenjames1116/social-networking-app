@@ -24,6 +24,7 @@ export default function CommentForm() {
         placeholder="What's on your mind?"
         rows="8"
         cols="50"
+        maxLength="250"
         style={style}
         onChange={() => countCharacters()}
       />
