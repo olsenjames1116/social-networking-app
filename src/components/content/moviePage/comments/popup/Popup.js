@@ -1,4 +1,5 @@
 import React from 'react';
+import CloseIcon from './CloseIcon';
 
 export default function Popup() {
   const style = {
@@ -13,7 +14,7 @@ export default function Popup() {
 
   return (
     <div className="popup" style={style}>
-      Popup
+      <CloseIcon />
     </div>
   );
 }
