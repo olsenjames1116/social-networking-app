@@ -1,5 +1,6 @@
 import React from 'react';
 import CloseIcon from './CloseIcon';
+import CommentForm from './CommentForm';
 
 export default function Popup() {
   const style = {
@@ -15,6 +16,7 @@ export default function Popup() {
   return (
     <div className="popup" style={style}>
       <CloseIcon />
+      <CommentForm />
     </div>
   );
 }
