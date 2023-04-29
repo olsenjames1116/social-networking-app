@@ -5,6 +5,7 @@ import mostPopularReducer from './mostPopularSlice';
 import trendingReducer from './trendingSlice';
 import movieReducer from './movieSlice';
 import popupReducer from './popupSlice';
+import characterCountReducer from './characterCountSlice';
 
 export {
   isLoggedInReducer,
@@ -13,5 +14,6 @@ export {
   mostPopularReducer,
   trendingReducer,
   movieReducer,
-  popupReducer
+  popupReducer,
+  characterCountReducer
 };

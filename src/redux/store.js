@@ -6,7 +6,8 @@ import {
   mostPopularReducer,
   trendingReducer,
   movieReducer,
-  popupReducer
+  popupReducer,
+  characterCountReducer
 } from './state';
 
 export default configureStore({
@@ -17,6 +18,7 @@ export default configureStore({
     mostPopular: mostPopularReducer,
     trending: trendingReducer,
     movie: movieReducer,
-    popup: popupReducer
+    popup: popupReducer,
+    characterCount: characterCountReducer
   }
 });
