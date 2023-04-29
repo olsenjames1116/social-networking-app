@@ -1,3 +1,4 @@
 import menuIcon from './menu.svg';
+import closeIcon from './close.svg';
 
-export { menuIcon };
+export { menuIcon, closeIcon };
