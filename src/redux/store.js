@@ -7,7 +7,8 @@ import {
   trendingReducer,
   movieReducer,
   popupReducer,
-  characterCountReducer
+  characterCountReducer,
+  commentsReducer
 } from './state';
 
 export default configureStore({
@@ -19,6 +20,7 @@ export default configureStore({
     trending: trendingReducer,
     movie: movieReducer,
     popup: popupReducer,
-    characterCount: characterCountReducer
+    characterCount: characterCountReducer,
+    comments: commentsReducer
   }
 });

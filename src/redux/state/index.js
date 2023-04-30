@@ -6,6 +6,7 @@ import trendingReducer from './trendingSlice';
 import movieReducer from './movieSlice';
 import popupReducer from './popupSlice';
 import characterCountReducer from './characterCountSlice';
+import commentsReducer from './commentsSlice';
 
 export {
   isLoggedInReducer,
@@ -15,5 +16,6 @@ export {
   trendingReducer,
   movieReducer,
   popupReducer,
-  characterCountReducer
+  characterCountReducer,
+  commentsReducer
 };
