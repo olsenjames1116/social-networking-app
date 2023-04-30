@@ -9,7 +9,7 @@ export default function CommentUserInfo({ user, profilePic }) {
 
   return (
     <div className="commentUserInfo">
-      <img src={profilePic} style={style} />
+      <img src={profilePic} style={style} alt="The user's profile photo" />
       <span>{user}</span>
     </div>
   );
