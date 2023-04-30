@@ -9,7 +9,7 @@ export default function UserComment({ comment }) {
     <li>
       <CommentUserInfo user={comment.user} profilePic={comment.profilePicUrl} />
       <CommentText text={comment.text} />
-      <CommentInteraction />
+      <CommentInteraction likes={comment.likes} />
     </li>
   );
 }
