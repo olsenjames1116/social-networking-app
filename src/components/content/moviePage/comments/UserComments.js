@@ -4,13 +4,15 @@ import { collection, getDocs } from 'firebase/firestore';
 import UserComment from './UserComment';
 import { useDispatch, useSelector } from 'react-redux';
 import { setComments } from '../../../../redux/state/commentsSlice';
+import { useParams } from 'react-router-dom';
 
 export default function UserComments() {
   const comments = useSelector((state) => state.comments.value);
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   const getComments = async () => {
-    const docRef = collection(db, 'movies/238/comments');
+    const docRef = collection(db, `movies/${id}/comments`);
     const docSnap = await getDocs(docRef);
     const commentData = [];
 
