@@ -16,7 +16,10 @@ export default function UserComments() {
     const docSnap = await getDocs(docRef);
     const commentData = [];
 
-    docSnap.forEach((doc) => commentData.push(doc.data()));
+    docSnap.forEach((doc) => {
+      const docObject = Object.assign({ docId: doc.id }, doc.data());
+      commentData.push(docObject);
+    });
 
     dispatch(setComments(commentData));
   };

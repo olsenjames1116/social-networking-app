@@ -15,5 +15,5 @@ export const commentsSlice = createSlice({
   }
 });
 
-export const { setComments, clearComments } = commentsSlice.actions;
+export const { setComments, clearComments, addLike } = commentsSlice.actions;
 export default commentsSlice.reducer;
