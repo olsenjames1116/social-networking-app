@@ -54,7 +54,7 @@ export default function Likes({ likes, docId }) {
 
   const displayLike = () => {
     const commentLikeIcon = document.querySelector(`li#${docId} div.likes>img`);
-    commentLikeIcon.cssText = 'background-color: green; height: 30px; width: auto';
+    commentLikeIcon.setAttribute('style', 'background-color: green; height: 30px; width: auto');
   };
 
   const checkUserLikes = async () => {
