@@ -12,16 +12,20 @@ export default function UserComments() {
   const { id } = useParams();
 
   const getComments = async () => {
-    const docRef = collection(db, `movies/${id}/comments`);
-    const docSnap = await getDocs(docRef);
-    const commentData = [];
+    try {
+      const docRef = collection(db, `movies/${id}/comments`);
+      const docSnap = await getDocs(docRef);
+      const commentData = [];
 
-    docSnap.forEach((doc) => {
-      const docObject = Object.assign({ docId: doc.id }, doc.data());
-      commentData.push(docObject);
-    });
+      docSnap.forEach((doc) => {
+        const docObject = Object.assign({ docId: doc.id }, doc.data());
+        commentData.push(docObject);
+      });
 
-    dispatch(setComments(commentData));
+      dispatch(setComments(commentData));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

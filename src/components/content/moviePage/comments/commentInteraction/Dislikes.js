@@ -18,14 +18,18 @@ export default function Dislikes({ likes, docId }) {
   };
 
   const updateLikes = async () => {
-    const docRef = doc(db, `movies/${id}/comments/${docId}`);
-    await updateDoc(docRef, { likes: likes - 1 });
-    const docSnap = await getDoc(docRef);
-    const docObject = Object.assign({ docId: docId }, docSnap.data());
+    try {
+      const docRef = doc(db, `movies/${id}/comments/${docId}`);
+      await updateDoc(docRef, { likes: likes - 1 });
+      const docSnap = await getDoc(docRef);
+      const docObject = Object.assign({ docId: docId }, docSnap.data());
 
-    const index = comments.findIndex((comment) => comment.docId === docId);
+      const index = comments.findIndex((comment) => comment.docId === docId);
 
-    dispatch(changeLike([index, docObject]));
+      dispatch(changeLike([index, docObject]));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => console.table(comments), [comments]);
