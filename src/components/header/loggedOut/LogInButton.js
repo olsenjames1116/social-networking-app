@@ -4,18 +4,17 @@ import { auth, provider } from '../../../firebase';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../../redux/state/isLoggedInSlice';
 import { db } from '../../../firebase';
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
+import { setDoc, collection, getDoc, doc } from 'firebase/firestore';
 
 export default function LogInButton() {
   const dispatch = useDispatch();
 
-  const validateUser = async () => {
+  const validateNewUser = async () => {
     try {
-      const docRef = collection(db, 'users');
-      const docQuery = query(docRef, where('id', '==', localStorage.getItem('id')));
-      const docSnap = await getDocs(docQuery);
+      const docRef = doc(db, `users/${localStorage.getItem('id')}`);
+      const docSnap = await getDoc(docRef);
 
-      if (docSnap.empty) storeNewUser();
+      if (!docSnap.exists()) storeNewUser();
     } catch (error) {
       console.log(error);
     }
@@ -25,12 +24,11 @@ export default function LogInButton() {
     console.log('new user');
     try {
       const data = {
-        id: localStorage.getItem('id'),
         name: localStorage.getItem('name')
       };
 
       const docRef = collection(db, 'users');
-      await addDoc(docRef, data);
+      await setDoc(doc(docRef, localStorage.getItem('id')), data);
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +42,7 @@ export default function LogInButton() {
       localStorage.setItem('name', response.user.displayName);
       localStorage.setItem('image', response.user.photoURL);
 
-      validateUser();
+      validateNewUser();
 
       dispatch(logIn());
     } catch (error) {

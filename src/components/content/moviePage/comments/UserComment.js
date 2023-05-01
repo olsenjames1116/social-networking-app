@@ -6,7 +6,7 @@ import CommentInteraction from './commentInteraction/CommentInteraction';
 
 export default function UserComment({ comment }) {
   return (
-    <li>
+    <li id={comment.docId}>
       <CommentUserInfo user={comment.user} profilePic={comment.profilePicUrl} />
       <CommentText text={comment.text} />
       <CommentInteraction likes={comment.likes} docId={comment.docId} />

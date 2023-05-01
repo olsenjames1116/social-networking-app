@@ -1,7 +1,16 @@
 import React, { useEffect } from 'react';
 import { likeIcon } from '../../../../../images';
 import { db } from '../../../../../firebase';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  updateDoc,
+  query,
+  where,
+  getDocs
+} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,6 +26,15 @@ export default function Likes({ likes, docId }) {
     width: 'auto'
   };
 
+  const addLikeDoc = async () => {
+    try {
+      const docRef = collection(db, `users/${localStorage.getItem('id')}/likes`);
+      await addDoc(docRef, { postId: docId });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const updateLikes = async () => {
     try {
       const docRef = doc(db, `movies/${id}/comments/${docId}`);
@@ -27,12 +45,33 @@ export default function Likes({ likes, docId }) {
       const index = comments.findIndex((comment) => comment.docId === docId);
 
       dispatch(changeLike([index, docObject]));
+
+      addLikeDoc();
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => console.log(comments), [comments]);
+  const displayLike = () => {
+    const commentLikeIcon = document.querySelector(`li#${docId} div.likes>img`);
+    commentLikeIcon.cssText = 'background-color: green; height: 30px; width: auto';
+  };
+
+  const checkUserLikes = async () => {
+    try {
+      const docRef = collection(db, `users/${localStorage.getItem('id')}/likes`);
+      const docQuery = query(docRef, where('postId', '==', docId));
+      const docSnap = await getDocs(docQuery);
+
+      if (!docSnap.empty) displayLike();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    checkUserLikes();
+  }, []);
 
   return (
     <div className="likes">
