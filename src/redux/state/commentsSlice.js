@@ -11,6 +11,16 @@ export const commentsSlice = createSlice({
     },
     clearComments: (state) => {
       state.value = [];
+    },
+    addLike: (state, action) => {
+      const index = action.payload[0];
+      const likeCount = action.payload[1];
+
+      state.value = [
+        ...state.value.slice(0, index),
+        { ...state.value[index], likes: likeCount },
+        ...state.value.slice(index + 1)
+      ];
     }
   }
 });
