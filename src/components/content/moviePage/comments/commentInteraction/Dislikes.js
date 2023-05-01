@@ -3,7 +3,7 @@ import { dislikeIcon } from '../../../../../images';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeLike } from '../../../../../redux/state/commentsSlice';
 import PropTypes from 'prop-types';
-import { updateDoc, doc } from 'firebase/firestore';
+import { updateDoc, doc, getDoc } from 'firebase/firestore';
 import { db } from '../../../../../firebase';
 import { useParams } from 'react-router-dom';
 
@@ -20,10 +20,12 @@ export default function Dislikes({ likes, docId }) {
   const updateLikes = async () => {
     const docRef = doc(db, `movies/${id}/comments/${docId}`);
     await updateDoc(docRef, { likes: likes - 1 });
+    const docSnap = await getDoc(docRef);
+    const docObject = Object.assign({ docId: docId }, docSnap.data());
 
     const index = comments.findIndex((comment) => comment.docId === docId);
 
-    dispatch(changeLike([index, likes - 1]));
+    dispatch(changeLike([index, docObject]));
   };
 
   useEffect(() => console.table(comments), [comments]);
