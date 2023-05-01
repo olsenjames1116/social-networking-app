@@ -9,7 +9,7 @@ export default function CommentInteraction({ likes, docId }) {
     <div className="commentInteraction">
       <Likes likes={likes} docId={docId} />
       <LikeCount likes={likes} />
-      <Dislikes likes={likes} />
+      <Dislikes likes={likes} docId={docId} />
     </div>
   );
 }

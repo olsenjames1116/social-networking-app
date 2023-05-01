@@ -5,7 +5,7 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { addLike } from '../../../../../redux/state/commentsSlice';
+import { changeLike } from '../../../../../redux/state/commentsSlice';
 
 export default function Likes({ likes, docId }) {
   const { id } = useParams();
@@ -23,10 +23,10 @@ export default function Likes({ likes, docId }) {
 
     const index = comments.findIndex((comment) => comment.docId === docId);
 
-    dispatch(addLike([index, likes + 1]));
+    dispatch(changeLike([index, likes + 1]));
   };
 
-  useEffect(() => console.log(likes), [likes]);
+  useEffect(() => console.log(comments), [comments]);
 
   return (
     <div className="likes">

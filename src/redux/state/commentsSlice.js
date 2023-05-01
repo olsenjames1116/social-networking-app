@@ -12,7 +12,7 @@ export const commentsSlice = createSlice({
     clearComments: (state) => {
       state.value = [];
     },
-    addLike: (state, action) => {
+    changeLike: (state, action) => {
       const index = action.payload[0];
       const likeCount = action.payload[1];
 
@@ -25,5 +25,5 @@ export const commentsSlice = createSlice({
   }
 });
 
-export const { setComments, clearComments, addLike } = commentsSlice.actions;
+export const { setComments, clearComments, changeLike } = commentsSlice.actions;
 export default commentsSlice.reducer;
