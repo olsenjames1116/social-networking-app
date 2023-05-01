@@ -47,6 +47,7 @@ export default function Likes({ likes, docId }) {
       dispatch(changeLike([index, docObject]));
 
       addLikeDoc();
+      checkUserLikes();
     } catch (error) {
       console.log(error);
     }

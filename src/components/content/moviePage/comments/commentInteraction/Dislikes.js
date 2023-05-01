@@ -3,7 +3,16 @@ import { dislikeIcon } from '../../../../../images';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeLike } from '../../../../../redux/state/commentsSlice';
 import PropTypes from 'prop-types';
-import { updateDoc, doc, getDoc } from 'firebase/firestore';
+import {
+  updateDoc,
+  doc,
+  getDoc,
+  collection,
+  addDoc,
+  query,
+  getDocs,
+  where
+} from 'firebase/firestore';
 import { db } from '../../../../../firebase';
 import { useParams } from 'react-router-dom';
 
@@ -17,6 +26,15 @@ export default function Dislikes({ likes, docId }) {
     width: 'auto'
   };
 
+  const addDislikeDoc = async () => {
+    try {
+      const docRef = collection(db, `users/${localStorage.getItem('id')}/dislikes`);
+      await addDoc(docRef, { postId: docId });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const updateLikes = async () => {
     try {
       const docRef = doc(db, `movies/${id}/comments/${docId}`);
@@ -27,12 +45,34 @@ export default function Dislikes({ likes, docId }) {
       const index = comments.findIndex((comment) => comment.docId === docId);
 
       dispatch(changeLike([index, docObject]));
+
+      addDislikeDoc();
+      checkUserDislikes();
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => console.table(comments), [comments]);
+  const displayDislike = () => {
+    const commentDislikeIcon = document.querySelector(`li#${docId} div.dislikes>img`);
+    commentDislikeIcon.setAttribute('style', 'background-color: red; height: 30px; width: auto');
+  };
+
+  const checkUserDislikes = async () => {
+    try {
+      const docRef = collection(db, `users/${localStorage.getItem('id')}/dislikes`);
+      const docQuery = query(docRef, where('postId', '==', docId));
+      const docSnap = await getDocs(docQuery);
+
+      if (!docSnap.empty) displayDislike();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    checkUserDislikes();
+  }, []);
 
   return (
     <div className="dislikes">
