@@ -35,6 +35,25 @@ export default function Likes({ likes, docId }) {
     }
   };
 
+  const displayLike = () => {
+    const commentLikeIcon = document.querySelector(`li#${docId} div.likes>img`);
+    commentLikeIcon.setAttribute('style', 'background-color: green; height: 30px; width: auto');
+  };
+
+  const checkUserLikes = async () => {
+    try {
+      const docRef = collection(db, `users/${localStorage.getItem('id')}/likes`);
+      const docQuery = query(docRef, where('postId', '==', docId));
+      const docSnap = await getDocs(docQuery);
+
+      if (!docSnap.empty) {
+        displayLike();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const updateLikes = async () => {
     try {
       const docRef = doc(db, `movies/${id}/comments/${docId}`);
@@ -53,18 +72,15 @@ export default function Likes({ likes, docId }) {
     }
   };
 
-  const displayLike = () => {
-    const commentLikeIcon = document.querySelector(`li#${docId} div.likes>img`);
-    commentLikeIcon.setAttribute('style', 'background-color: green; height: 30px; width: auto');
-  };
-
-  const checkUserLikes = async () => {
+  const checkIfUserHasLiked = async () => {
     try {
       const docRef = collection(db, `users/${localStorage.getItem('id')}/likes`);
       const docQuery = query(docRef, where('postId', '==', docId));
       const docSnap = await getDocs(docQuery);
 
-      if (!docSnap.empty) displayLike();
+      if (docSnap.empty) {
+        updateLikes();
+      }
     } catch (error) {
       console.log(error);
     }
@@ -76,7 +92,12 @@ export default function Likes({ likes, docId }) {
 
   return (
     <div className="likes">
-      <img src={likeIcon} alt="A thumbs up icon" style={style} onClick={() => updateLikes()} />
+      <img
+        src={likeIcon}
+        alt="A thumbs up icon"
+        style={style}
+        onClick={() => checkIfUserHasLiked()}
+      />
     </div>
   );
 }
