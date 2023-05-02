@@ -11,7 +11,8 @@ import {
   addDoc,
   query,
   getDocs,
-  where
+  where,
+  deleteDoc
 } from 'firebase/firestore';
 import { db } from '../../../../../firebase';
 import { useParams } from 'react-router-dom';
@@ -20,6 +21,7 @@ export default function Dislikes({ likes, docId }) {
   const { id } = useParams();
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.comments.value);
+  let likeIncrement = 1;
 
   const style = {
     height: '30px',
@@ -40,6 +42,11 @@ export default function Dislikes({ likes, docId }) {
     commentDislikeIcon.setAttribute('style', 'background-color: red; height: 30px; width: auto');
   };
 
+  const displayLike = () => {
+    const commentLikeIcon = document.querySelector(`li#${docId} div.likes>img`);
+    commentLikeIcon.setAttribute('style', 'height: 30px; width: auto');
+  };
+
   const checkUserDislikes = async () => {
     try {
       const docRef = collection(db, `users/${localStorage.getItem('id')}/dislikes`);
@@ -55,7 +62,7 @@ export default function Dislikes({ likes, docId }) {
   const updateDislikes = async () => {
     try {
       const docRef = doc(db, `movies/${id}/comments/${docId}`);
-      await updateDoc(docRef, { likes: likes - 1 });
+      await updateDoc(docRef, { likes: likes - likeIncrement });
       const docSnap = await getDoc(docRef);
       const docObject = Object.assign({ docId: docId }, docSnap.data());
 
@@ -70,6 +77,30 @@ export default function Dislikes({ likes, docId }) {
     }
   };
 
+  const updateLikes = async () => {
+    const docRef = collection(db, `users/${localStorage.getItem('id')}/likes`);
+    const docQuery = query(docRef, where('postId', '==', docId));
+    const docSnap = await getDocs(docQuery);
+    docSnap.forEach(async (doc) => await deleteDoc(doc.ref));
+
+    displayLike();
+  };
+
+  const checkIfUserHasLiked = async () => {
+    try {
+      const docRef = collection(db, `users/${localStorage.getItem('id')}/likes`);
+      const docQuery = query(docRef, where('postId', '==', docId));
+      const docSnap = await getDocs(docQuery);
+
+      if (!docSnap.empty) {
+        updateLikes();
+        likeIncrement = 2;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const checkIfUserHasDisliked = async () => {
     try {
       const docRef = collection(db, `users/${localStorage.getItem('id')}/dislikes`);
@@ -77,6 +108,7 @@ export default function Dislikes({ likes, docId }) {
       const docSnap = await getDocs(docQuery);
 
       if (docSnap.empty) {
+        await checkIfUserHasLiked();
         updateDislikes();
       }
     } catch (error) {
