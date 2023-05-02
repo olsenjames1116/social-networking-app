@@ -46,9 +46,7 @@ export default function Likes({ likes, docId }) {
       const docQuery = query(docRef, where('postId', '==', docId));
       const docSnap = await getDocs(docQuery);
 
-      if (!docSnap.empty) {
-        displayLike();
-      }
+      if (!docSnap.empty) displayLike();
     } catch (error) {
       console.log(error);
     }

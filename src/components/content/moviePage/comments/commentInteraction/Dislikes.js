@@ -35,24 +35,6 @@ export default function Dislikes({ likes, docId }) {
     }
   };
 
-  const updateLikes = async () => {
-    try {
-      const docRef = doc(db, `movies/${id}/comments/${docId}`);
-      await updateDoc(docRef, { likes: likes - 1 });
-      const docSnap = await getDoc(docRef);
-      const docObject = Object.assign({ docId: docId }, docSnap.data());
-
-      const index = comments.findIndex((comment) => comment.docId === docId);
-
-      dispatch(changeLike([index, docObject]));
-
-      addDislikeDoc();
-      checkUserDislikes();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const displayDislike = () => {
     const commentDislikeIcon = document.querySelector(`li#${docId} div.dislikes>img`);
     commentDislikeIcon.setAttribute('style', 'background-color: red; height: 30px; width: auto');
@@ -70,13 +52,50 @@ export default function Dislikes({ likes, docId }) {
     }
   };
 
+  const updateDislikes = async () => {
+    try {
+      const docRef = doc(db, `movies/${id}/comments/${docId}`);
+      await updateDoc(docRef, { likes: likes - 1 });
+      const docSnap = await getDoc(docRef);
+      const docObject = Object.assign({ docId: docId }, docSnap.data());
+
+      const index = comments.findIndex((comment) => comment.docId === docId);
+
+      dispatch(changeLike([index, docObject]));
+
+      addDislikeDoc();
+      checkUserDislikes();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const checkIfUserHasDisliked = async () => {
+    try {
+      const docRef = collection(db, `users/${localStorage.getItem('id')}/dislikes`);
+      const docQuery = query(docRef, where('postId', '==', docId));
+      const docSnap = await getDocs(docQuery);
+
+      if (docSnap.empty) {
+        updateDislikes();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     checkUserDislikes();
   }, []);
 
   return (
     <div className="dislikes">
-      <img src={dislikeIcon} alt="A thumbs down icon" style={style} onClick={() => updateLikes()} />
+      <img
+        src={dislikeIcon}
+        alt="A thumbs down icon"
+        style={style}
+        onClick={() => checkIfUserHasDisliked()}
+      />
     </div>
   );
 }
