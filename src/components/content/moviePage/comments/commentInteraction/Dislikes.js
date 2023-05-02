@@ -37,14 +37,19 @@ export default function Dislikes({ likes, docId }) {
     }
   };
 
-  const displayDislike = () => {
+  const addDislikeStyle = () => {
     const commentDislikeIcon = document.querySelector(`li#${docId} div.dislikes>img`);
     commentDislikeIcon.setAttribute('style', 'background-color: red; height: 30px; width: auto');
   };
 
-  const displayLike = () => {
+  const removeLikeStyle = () => {
     const commentLikeIcon = document.querySelector(`li#${docId} div.likes>img`);
     commentLikeIcon.setAttribute('style', 'height: 30px; width: auto');
+  };
+
+  const removeDislikeStyle = () => {
+    const commentDislikeIcon = document.querySelector(`li#${docId} div.dislikes>img`);
+    commentDislikeIcon.setAttribute('style', 'height: 30px; width: auto');
   };
 
   const checkUserDislikes = async () => {
@@ -53,7 +58,7 @@ export default function Dislikes({ likes, docId }) {
       const docQuery = query(docRef, where('postId', '==', docId));
       const docSnap = await getDocs(docQuery);
 
-      if (!docSnap.empty) displayDislike();
+      if (!docSnap.empty) addDislikeStyle();
     } catch (error) {
       console.log(error);
     }
@@ -83,7 +88,7 @@ export default function Dislikes({ likes, docId }) {
     const docSnap = await getDocs(docQuery);
     docSnap.forEach(async (doc) => await deleteDoc(doc.ref));
 
-    displayLike();
+    removeLikeStyle();
   };
 
   const checkIfUserHasLiked = async () => {
@@ -101,6 +106,28 @@ export default function Dislikes({ likes, docId }) {
     }
   };
 
+  const removeDislike = async () => {
+    try {
+      const dislikeDocRef = collection(db, `users/${localStorage.getItem('id')}/dislikes`);
+      const dislikeDocQuery = query(dislikeDocRef, where('postId', '==', docId));
+      const dislikeDocSnap = await getDocs(dislikeDocQuery);
+      dislikeDocSnap.forEach(async (doc) => await deleteDoc(doc.ref));
+
+      const commentDocRef = doc(db, `movies/${id}/comments/${docId}`);
+      await updateDoc(commentDocRef, { likes: likes + 1 });
+      const commentDocSnap = await getDoc(commentDocRef);
+      const commentDocObject = Object.assign({ docId: docId }, commentDocSnap.data());
+
+      const index = comments.findIndex((comment) => comment.docId === docId);
+
+      dispatch(changeLike([index, commentDocObject]));
+
+      removeDislikeStyle();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const checkIfUserHasDisliked = async () => {
     try {
       const docRef = collection(db, `users/${localStorage.getItem('id')}/dislikes`);
@@ -110,6 +137,8 @@ export default function Dislikes({ likes, docId }) {
       if (docSnap.empty) {
         await checkIfUserHasLiked();
         updateDislikes();
+      } else {
+        removeDislike();
       }
     } catch (error) {
       console.log(error);
