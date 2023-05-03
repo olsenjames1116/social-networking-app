@@ -8,9 +8,12 @@ export const characterCountSlice = createSlice({
   reducers: {
     setCharacterCount: (state, action) => {
       state.value = action.payload;
+    },
+    resetCharacterCount: (state) => {
+      state.value = 0;
     }
   }
 });
 
-export const { setCharacterCount } = characterCountSlice.actions;
+export const { setCharacterCount, resetCharacterCount } = characterCountSlice.actions;
 export default characterCountSlice.reducer;
