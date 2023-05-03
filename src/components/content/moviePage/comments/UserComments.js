@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { db } from '../../../../firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import UserComment from './UserComment';
 import { useDispatch, useSelector } from 'react-redux';
 import { setComments } from '../../../../redux/state/commentsSlice';
@@ -14,7 +14,8 @@ export default function UserComments() {
   const getComments = async () => {
     try {
       const docRef = collection(db, `movies/${id}/comments`);
-      const docSnap = await getDocs(docRef);
+      const docQuery = query(docRef, orderBy('timestamp', 'desc'), orderBy('likes', 'desc'));
+      const docSnap = await getDocs(docQuery);
       const commentData = [];
 
       docSnap.forEach((doc) => {
