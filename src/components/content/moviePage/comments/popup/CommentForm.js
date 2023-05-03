@@ -4,9 +4,13 @@ import { useDispatch } from 'react-redux';
 import { setCharacterCount } from '../../../../../redux/state/characterCountSlice';
 import { hidePopup } from '../../../../../redux/state/popupSlice';
 import { resetCharacterCount } from '../../../../../redux/state/characterCountSlice';
+import { db } from '../../../../../firebase';
+import { useParams } from 'react-router-dom';
+import { collection, addDoc } from 'firebase/firestore';
 
 export default function CommentForm() {
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   const style = {
     resize: 'none'
@@ -42,18 +46,23 @@ export default function CommentForm() {
   };
 
   const postComment = async (comment) => {
-    const dateNum = formatDate();
+    try {
+      const dateNum = formatDate();
 
-    const data = {
-      id: localStorage.getItem('id'),
-      likes: 0,
-      profilePicUrl: localStorage.getItem('image'),
-      text: comment,
-      timestamp: dateNum,
-      user: localStorage.getItem('name')
-    };
+      const data = {
+        id: localStorage.getItem('id'),
+        likes: 0,
+        profilePicUrl: localStorage.getItem('image'),
+        text: comment,
+        timestamp: dateNum,
+        user: localStorage.getItem('name')
+      };
 
-    console.log(data);
+      const docRef = collection(db, `movies/${id}/comments`);
+      await addDoc(docRef, data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const clearInput = () => {
