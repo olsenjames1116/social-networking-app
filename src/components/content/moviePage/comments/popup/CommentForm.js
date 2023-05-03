@@ -3,6 +3,7 @@ import CharacterCount from './CharacterCount';
 import { useDispatch } from 'react-redux';
 import { setCharacterCount } from '../../../../../redux/state/characterCountSlice';
 import { hidePopup } from '../../../../../redux/state/popupSlice';
+import { resetCharacterCount } from '../../../../../redux/state/characterCountSlice';
 
 export default function CommentForm() {
   const dispatch = useDispatch();
@@ -55,6 +56,14 @@ export default function CommentForm() {
     console.log(data);
   };
 
+  const clearInput = () => {
+    const popupTextarea = document.querySelector('textarea#comment');
+    popupTextarea.textContent = '';
+
+    dispatch(resetCharacterCount());
+    dispatch(hidePopup());
+  };
+
   const displayErrorMessage = () => {
     console.log('invalid input');
     const commentInput = document.querySelector('textarea#comment');
@@ -76,7 +85,7 @@ export default function CommentForm() {
     if (form.checkValidity()) {
       // console.log(comment);
       postComment(comment);
-      dispatch(hidePopup());
+      clearInput();
     } else {
       displayErrorMessage();
     }
