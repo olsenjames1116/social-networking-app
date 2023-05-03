@@ -29,6 +29,32 @@ export default function CommentForm() {
     resetValidity();
   };
 
+  const formatDate = () => {
+    const dateObj = new Date();
+
+    const month = dateObj.getMonth() < 10 ? `0${dateObj.getMonth() + 1}` : dateObj.getMonth() + 1;
+    const date = dateObj.getDate() < 10 ? `0${dateObj.getDate()}` : dateObj.getDate();
+
+    const dateString = `${dateObj.getFullYear()}${month}${date}`;
+
+    return parseInt(dateString);
+  };
+
+  const postComment = async (comment) => {
+    const dateNum = formatDate();
+
+    const data = {
+      id: localStorage.getItem('id'),
+      likes: 0,
+      profilePicUrl: localStorage.getItem('image'),
+      text: comment,
+      timestamp: dateNum,
+      user: localStorage.getItem('name')
+    };
+
+    console.log(data);
+  };
+
   const displayErrorMessage = () => {
     console.log('invalid input');
     const commentInput = document.querySelector('textarea#comment');
@@ -48,9 +74,9 @@ export default function CommentForm() {
     const form = document.querySelector('form');
 
     if (form.checkValidity()) {
-      console.log(comment);
+      // console.log(comment);
+      postComment(comment);
       dispatch(hidePopup());
-      alert('Your comment has been posted!');
     } else {
       displayErrorMessage();
     }
