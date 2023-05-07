@@ -6,7 +6,8 @@ import { hidePopup } from '../../../../../redux/state/popupSlice';
 import { resetCharacterCount } from '../../../../../redux/state/characterCountSlice';
 import { db } from '../../../../../firebase';
 import { useParams } from 'react-router-dom';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, orderBy } from 'firebase/firestore';
+import { setComments } from '../../../../../redux/state/commentsSlice';
 
 export default function CommentForm() {
   const dispatch = useDispatch();
@@ -45,6 +46,20 @@ export default function CommentForm() {
     return parseInt(dateString);
   };
 
+  const reloadComments = async () => {
+    const docRef = collection(db, `movies/${id}/comments`);
+    const docQuery = query(docRef, orderBy('timestamp', 'desc'), orderBy('likes', 'desc'));
+    const docSnap = await getDocs(docQuery);
+    const commentData = [];
+
+    docSnap.forEach((doc) => {
+      const docObject = Object.assign({ docId: doc.id }, doc.data());
+      commentData.push(docObject);
+    });
+
+    dispatch(setComments(commentData));
+  };
+
   const postComment = async (comment) => {
     try {
       const dateNum = formatDate();
@@ -60,6 +75,8 @@ export default function CommentForm() {
 
       const docRef = collection(db, `movies/${id}/comments`);
       await addDoc(docRef, data);
+
+      reloadComments();
     } catch (error) {
       console.log(error);
     }
