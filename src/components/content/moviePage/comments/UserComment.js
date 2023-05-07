@@ -14,7 +14,9 @@ export default function UserComment({ comment }) {
       <CommentUserInfo user={comment.user} profilePic={comment.profilePicUrl} />
       <CommentText text={comment.text} />
       <CommentDate date={comment.timestamp} />
-      {isLoggedIn && <CommentInteraction likes={comment.likes} docId={comment.docId} />}
+      {isLoggedIn && (
+        <CommentInteraction likes={comment.likes} docId={comment.docId} userId={comment.id} />
+      )}
     </li>
   );
 }
