@@ -11,7 +11,7 @@ export default function CommentInteraction({ likes, docId, userId }) {
       <Likes likes={likes} docId={docId} />
       <LikeCount likes={likes} />
       <Dislikes likes={likes} docId={docId} />
-      {userId === localStorage.getItem('id') && <DeleteIcon />}
+      {userId === localStorage.getItem('id') && <DeleteIcon docId={docId} />}
     </div>
   );
 }

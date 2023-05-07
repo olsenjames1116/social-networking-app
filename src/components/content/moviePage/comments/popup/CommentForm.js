@@ -47,17 +47,21 @@ export default function CommentForm() {
   };
 
   const reloadComments = async () => {
-    const docRef = collection(db, `movies/${id}/comments`);
-    const docQuery = query(docRef, orderBy('timestamp', 'desc'), orderBy('likes', 'desc'));
-    const docSnap = await getDocs(docQuery);
-    const commentData = [];
+    try {
+      const docRef = collection(db, `movies/${id}/comments`);
+      const docQuery = query(docRef, orderBy('timestamp', 'desc'), orderBy('likes', 'desc'));
+      const docSnap = await getDocs(docQuery);
+      const commentData = [];
 
-    docSnap.forEach((doc) => {
-      const docObject = Object.assign({ docId: doc.id }, doc.data());
-      commentData.push(docObject);
-    });
+      docSnap.forEach((doc) => {
+        const docObject = Object.assign({ docId: doc.id }, doc.data());
+        commentData.push(docObject);
+      });
 
-    dispatch(setComments(commentData));
+      dispatch(setComments(commentData));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const postComment = async (comment) => {
