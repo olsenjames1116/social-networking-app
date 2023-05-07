@@ -26,8 +26,6 @@ export default function MovieData({ id }) {
 
         const data = await response.json();
 
-        console.log(data);
-
         dispatch(setMovie(data));
       } catch (error) {
         console.log(error);

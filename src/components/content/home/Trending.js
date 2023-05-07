@@ -16,8 +16,6 @@ export default function Trending() {
         );
         const data = await response.json();
 
-        console.log(data.results);
-
         dispatch(setTrending(data.results.slice(0, 10)));
       } catch (error) {
         console.log(error);
