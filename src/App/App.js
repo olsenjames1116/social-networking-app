@@ -1,10 +1,10 @@
 import React from 'react';
 import RouteSwitch from '../RouteSwitch';
-import Header from '../components/header/Header';
+import Header from '../components/header/Header/Header';
 import Footer from '../components/footer/Footer';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../redux/state/isLoggedInSlice';
-import { AppContainer } from './App.style';
+import './App.css';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -14,11 +14,11 @@ export default function App() {
   };
 
   return (
-    <AppContainer>
+    <div className="app">
       {checkLogIn()}
       <Header />
       <RouteSwitch />
       <Footer />
-    </AppContainer>
+    </div>
   );
 }

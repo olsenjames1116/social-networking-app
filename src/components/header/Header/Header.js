@@ -1,6 +1,7 @@
 import React from 'react';
-import Logo from './Logo';
-import Account from './Account';
+import Logo from '../Logo';
+import Account from '../Account';
+import './Header.css';
 
 export default function Header() {
   return (
