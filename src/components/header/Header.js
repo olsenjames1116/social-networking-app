@@ -4,7 +4,7 @@ import Account from './Account';
 
 export default function Header() {
   return (
-    <div className="header" data-testid="header">
+    <div className="header">
       <Logo />
       <Account />
     </div>
