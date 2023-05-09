@@ -1,0 +1,20 @@
+li.accountMenuIcon {
+  display: flex;
+  align-items: center;
+}
+
+li.accountMenuIcon > img {
+  width: auto;
+  height: 25px;
+}
+
+li.accountMenuIcon > img:hover {
+  background-color: rgb(170, 170, 170);
+  border-radius: 50px;
+  transition: background-color 1s;
+}
+
+li.accountMenuIcon > img.clicked {
+  background-color: gray;
+  border-radius: 50px;
+}

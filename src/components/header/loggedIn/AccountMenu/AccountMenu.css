@@ -1,0 +1,22 @@
+ul.accountMenu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 85px;
+  top: 40px;
+}
+
+ul.accountMenu > li.inactiveItem {
+  background-color: rgb(240, 240, 240);
+  color: gray;
+}
+
+ul.accountMenu > li.activeItem {
+  background-color: white;
+}
+
+ul.accountMenu > li.activeItem:hover {
+  background-color: gray;
+  transition: background-color 1s;
+}
