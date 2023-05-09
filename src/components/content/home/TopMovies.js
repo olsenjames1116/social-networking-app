@@ -39,7 +39,12 @@ export default function TopMovies() {
     <div className="topMovies">
       <h2>Top Movies</h2>
       <div className="sliderContainer">
-        <ArrowLeft clicks={topMoviesClicks} decrementClicks={decrementClicks} />
+        <ArrowLeft
+          clicks={topMoviesClicks}
+          decrementClicks={decrementClicks}
+          movieElements={topMoviesElements}
+          resetClicks={resetClicks}
+        />
         <ul className="topMovies">
           {topMovies.map((movie) => {
             return (

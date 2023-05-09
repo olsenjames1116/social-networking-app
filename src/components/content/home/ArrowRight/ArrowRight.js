@@ -7,20 +7,19 @@ import './ArrowRight.css';
 export default function ArrowRight({ clicks, incrementClicks, resetClicks, movieElements }) {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log(clicks);
-    loadMovie();
-
-    if (clicks > 2) {
-      dispatch(resetClicks());
-    }
-  }, [clicks]);
-
   const loadMovie = () => {
     movieElements.forEach((element) => {
       element.style.transform = `translateX(${-183.32 * clicks}px)`;
     });
   };
+
+  useEffect(() => {
+    loadMovie();
+
+    if (clicks > movieElements.length - 1) {
+      dispatch(resetClicks());
+    }
+  }, [clicks]);
 
   const slideForward = () => {
     dispatch(incrementClicks());
