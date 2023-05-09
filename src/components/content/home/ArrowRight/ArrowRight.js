@@ -9,7 +9,7 @@ export default function ArrowRight({ clicks, incrementClicks, resetClicks, movie
 
   const loadMovie = () => {
     movieElements.forEach((element) => {
-      element.style.transform = `translateX(${-183.32 * clicks}px)`;
+      element.style.transform = `translateX(${-100 * clicks}%)`;
     });
   };
 

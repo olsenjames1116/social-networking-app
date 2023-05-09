@@ -1,4 +1,4 @@
-div.topMovies > h2 {
+div.movieList > h2 {
   margin: 0;
   padding: 10px;
 }
@@ -9,7 +9,7 @@ div.sliderContainer {
   gap: 10px;
 }
 
-ul.topMovies {
+ul.movieList {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -18,10 +18,10 @@ ul.topMovies {
   overflow: hidden;
 }
 
-ul.topMovies > a {
+ul.movieList > a {
   text-decoration: none;
 }
 
-ul.topMovies > a > li {
+ul.movieList > a > li {
   transition: transform 1s;
 }

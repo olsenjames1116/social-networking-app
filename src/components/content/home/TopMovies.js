@@ -5,7 +5,7 @@ import Movie from '../movie/Movie';
 import { Link } from 'react-router-dom';
 import ArrowLeft from './ArrowLeft/ArrowLeft';
 import ArrowRight from './ArrowRight/ArrowRight';
-import './TopMovies.css';
+import './MovieList.css';
 import {
   incrementClicks,
   decrementClicks,
@@ -36,7 +36,7 @@ export default function TopMovies() {
   }, []);
 
   return (
-    <div className="topMovies">
+    <div className="topMovies movieList">
       <h2>Top Movies</h2>
       <div className="sliderContainer">
         <ArrowLeft
@@ -45,7 +45,7 @@ export default function TopMovies() {
           movieElements={topMoviesElements}
           resetClicks={resetClicks}
         />
-        <ul className="topMovies">
+        <ul className="topMovies movieList">
           {topMovies.map((movie) => {
             return (
               <Link key={movie.id} to={`/${movie.id}`}>

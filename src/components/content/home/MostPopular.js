@@ -3,10 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setMostPopular } from '../../../redux/state/mostPopularSlice';
 import Movie from '../movie/Movie';
 import { Link } from 'react-router-dom';
+import ArrowLeft from './ArrowLeft/ArrowLeft';
+import ArrowRight from './ArrowRight/ArrowRight';
+import './MovieList.css';
+import {
+  incrementClicks,
+  decrementClicks,
+  resetClicks
+} from '../../../redux/state/mostPopularClicksSlice';
 
 export default function MostPopular() {
   const mostPopular = useSelector((state) => state.mostPopular.value);
+  const mostPopularClicks = useSelector((state) => state.mostPopularClicks.value);
   const dispatch = useDispatch();
+  const mostPopularElements = document.querySelectorAll('ul.mostPopular > a > li');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,17 +36,31 @@ export default function MostPopular() {
   }, []);
 
   return (
-    <div className="mostPopular">
+    <div className="mostPopular movieList">
       <h2>Most Popular</h2>
-      <ul className="mostPopular">
-        {mostPopular.map((movie) => {
-          return (
-            <Link key={movie.id} to={`/${movie.id}`}>
-              <Movie movie={movie} />
-            </Link>
-          );
-        })}
-      </ul>
+      <div className="sliderContainer">
+        <ArrowLeft
+          clicks={mostPopularClicks}
+          decrementClicks={decrementClicks}
+          movieElements={mostPopularElements}
+          resetClicks={resetClicks}
+        />
+        <ul className="mostPopular movieList">
+          {mostPopular.map((movie) => {
+            return (
+              <Link key={movie.id} to={`/${movie.id}`}>
+                <Movie movie={movie} />
+              </Link>
+            );
+          })}
+        </ul>
+        <ArrowRight
+          clicks={mostPopularClicks}
+          incrementClicks={incrementClicks}
+          resetClicks={resetClicks}
+          movieElements={mostPopularElements}
+        />
+      </div>
     </div>
   );
 }
