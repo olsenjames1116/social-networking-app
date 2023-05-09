@@ -1,0 +1,4 @@
+li.movie > p.title {
+  margin: 0;
+  text-align: center;
+}

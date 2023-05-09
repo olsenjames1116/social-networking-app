@@ -5,6 +5,8 @@ div.topMovies > h2 {
 
 div.sliderContainer {
   display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 ul.topMovies {

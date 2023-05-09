@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import MovieImage from '../../movie/MovieImage';
+import MovieImage from '../../movie/MovieImage/MovieImage';
 import PropTypes from 'prop-types';
-import Title from '../../movie/Title';
-import Score from '../../movie/Score';
+import Title from '../../movie/Title/Title';
+import Score from '../../movie/Score/Score';
 import Runtime from './Runtime';
 import ReleaseDate from './ReleaseDate';
 import Overview from './Overview';
