@@ -1,0 +1,7 @@
+div.footer > p.sources {
+  margin: 0;
+}
+
+p.sources > a {
+  text-decoration: none;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import RouteSwitch from '../RouteSwitch';
 import Header from '../components/header/Header/Header';
-import Footer from '../components/footer/Footer';
+import Footer from '../components/footer/Footer/Footer';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../redux/state/isLoggedInSlice';
 import './App.css';

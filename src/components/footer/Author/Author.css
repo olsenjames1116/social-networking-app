@@ -1,0 +1,7 @@
+div.footer > p.author {
+  margin: 0;
+}
+
+p.author > a {
+  text-decoration: none;
+}
