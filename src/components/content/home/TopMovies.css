@@ -19,3 +19,7 @@ ul.topMovies {
 ul.topMovies > a {
   text-decoration: none;
 }
+
+ul.topMovies > a > li {
+  transition: transform 1s;
+}

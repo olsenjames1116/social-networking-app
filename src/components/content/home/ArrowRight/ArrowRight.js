@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { arrowRightIcon } from '../../../../images';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import './ArrowRight.css';
 
 export default function ArrowRight({ clicks, incrementClicks, resetClicks, movieElements }) {
   const dispatch = useDispatch();
