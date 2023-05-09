@@ -6,11 +6,17 @@ import { Link } from 'react-router-dom';
 import ArrowLeft from './ArrowLeft/ArrowLeft';
 import ArrowRight from './ArrowRight/ArrowRight';
 import './TopMovies.css';
+import {
+  incrementClicks,
+  decrementClicks,
+  resetClicks
+} from '../../../redux/state/topMovieClicksSlice';
 
 export default function TopMovies() {
   const topMovies = useSelector((state) => state.topMovies.value);
   const topMoviesClicks = useSelector((state) => state.topMovieClicks.value);
   const dispatch = useDispatch();
+  const topMoviesElements = document.querySelectorAll('ul.topMovies > a > li');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +39,7 @@ export default function TopMovies() {
     <div className="topMovies">
       <h2>Top Movies</h2>
       <div className="sliderContainer">
-        <ArrowLeft />
+        <ArrowLeft clicks={topMoviesClicks} decrementClicks={decrementClicks} />
         <ul className="topMovies">
           {topMovies.map((movie) => {
             return (
@@ -43,7 +49,12 @@ export default function TopMovies() {
             );
           })}
         </ul>
-        <ArrowRight clicks={topMoviesClicks} />
+        <ArrowRight
+          clicks={topMoviesClicks}
+          incrementClicks={incrementClicks}
+          resetClicks={resetClicks}
+          movieElements={topMoviesElements}
+        />
       </div>
     </div>
   );
