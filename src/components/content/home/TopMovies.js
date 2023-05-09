@@ -9,6 +9,7 @@ import './TopMovies.css';
 
 export default function TopMovies() {
   const topMovies = useSelector((state) => state.topMovies.value);
+  const topMoviesClicks = useSelector((state) => state.topMovieClicks.value);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,17 +32,19 @@ export default function TopMovies() {
   return (
     <div className="topMovies">
       <h2>Top Movies</h2>
-      <ArrowLeft />
-      <ul className="topMovies">
-        {topMovies.map((movie) => {
-          return (
-            <Link key={movie.id} to={`/${movie.id}`}>
-              <Movie key={movie.id} movie={movie} />
-            </Link>
-          );
-        })}
-      </ul>
-      <ArrowRight />
+      <div className="sliderContainer">
+        <ArrowLeft />
+        <ul className="topMovies">
+          {topMovies.map((movie) => {
+            return (
+              <Link key={movie.id} to={`/${movie.id}`}>
+                <Movie key={movie.id} movie={movie} />
+              </Link>
+            );
+          })}
+        </ul>
+        <ArrowRight clicks={topMoviesClicks} />
+      </div>
     </div>
   );
 }

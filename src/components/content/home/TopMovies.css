@@ -3,10 +3,17 @@ div.topMovies > h2 {
   padding: 10px;
 }
 
+div.sliderContainer {
+  display: flex;
+}
+
 ul.topMovies {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  gap: 50px;
+  overflow: hidden;
 }
 
 ul.topMovies > a {

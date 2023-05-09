@@ -8,7 +8,10 @@ import {
   movieReducer,
   popupReducer,
   characterCountReducer,
-  commentsReducer
+  commentsReducer,
+  topMovieClicksReducer,
+  mostPopularClicksReducer,
+  trendingClicksReducer
 } from './state';
 
 export default configureStore({
@@ -21,6 +24,9 @@ export default configureStore({
     movie: movieReducer,
     popup: popupReducer,
     characterCount: characterCountReducer,
-    comments: commentsReducer
+    comments: commentsReducer,
+    topMovieClicks: topMovieClicksReducer,
+    mostPopularClicks: mostPopularClicksReducer,
+    trendingClicks: trendingClicksReducer
   }
 });

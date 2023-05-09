@@ -7,6 +7,9 @@ import movieReducer from './movieSlice';
 import popupReducer from './popupSlice';
 import characterCountReducer from './characterCountSlice';
 import commentsReducer from './commentsSlice';
+import topMovieClicksReducer from './topMovieClicksSlice';
+import mostPopularClicksReducer from './mostPopularClicksSlice';
+import trendingClicksReducer from './trendingClicksSlice';
 
 export {
   isLoggedInReducer,
@@ -17,5 +20,8 @@ export {
   movieReducer,
   popupReducer,
   characterCountReducer,
-  commentsReducer
+  commentsReducer,
+  topMovieClicksReducer,
+  mostPopularClicksReducer,
+  trendingClicksReducer
 };
