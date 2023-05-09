@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setTopMovies } from '../../../redux/state/topMoviesSlice';
 import Movie from '../movie/Movie';
 import { Link } from 'react-router-dom';
+import ArrowLeft from './ArrowLeft/ArrowLeft';
+import ArrowRight from './ArrowRight/ArrowRight';
+import './TopMovies.css';
 
 export default function TopMovies() {
   const topMovies = useSelector((state) => state.topMovies.value);
@@ -28,6 +31,7 @@ export default function TopMovies() {
   return (
     <div className="topMovies">
       <h2>Top Movies</h2>
+      <ArrowLeft />
       <ul className="topMovies">
         {topMovies.map((movie) => {
           return (
@@ -37,6 +41,7 @@ export default function TopMovies() {
           );
         })}
       </ul>
+      <ArrowRight />
     </div>
   );
 }
