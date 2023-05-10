@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/content/home/Home';
-import MoviePage from './components/content/moviePage/MoviePage';
+import MoviePage from './components/content/moviePage/MoviePage/MoviePage';
 
 export default function RouteSwitch() {
   return (

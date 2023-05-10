@@ -1,6 +1,6 @@
 div.movie {
   display: grid;
-  padding: 10px;
+  padding: 20px;
   gap: 10px;
   grid-template-columns: auto auto;
   grid-template-rows: 1fr auto auto auto auto auto;

@@ -1,0 +1,12 @@
+img.likes {
+  height: 30px;
+  width: auto;
+}
+
+img.likes:hover {
+  filter: invert(52%) sepia(0%) saturate(1600%) hue-rotate(157deg) brightness(97%) contrast(94%);
+}
+
+.likeActive {
+  filter: invert(20%) sepia(93%) saturate(4480%) hue-rotate(109deg) brightness(97%) contrast(102%);
+}

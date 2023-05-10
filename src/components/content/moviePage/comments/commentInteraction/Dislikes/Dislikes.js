@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { dislikeIcon } from '../../../../../images';
+import { dislikeIcon } from '../../../../../../images';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeLike } from '../../../../../redux/state/commentsSlice';
+import { changeLike } from '../../../../../../redux/state/commentsSlice';
 import PropTypes from 'prop-types';
 import {
   updateDoc,
@@ -14,19 +14,15 @@ import {
   where,
   deleteDoc
 } from 'firebase/firestore';
-import { db } from '../../../../../firebase';
+import { db } from '../../../../../../firebase';
 import { useParams } from 'react-router-dom';
+import './Dislikes.css';
 
 export default function Dislikes({ likes, docId }) {
   const { id } = useParams();
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.comments.value);
   let likeIncrement = 1;
-
-  const style = {
-    height: '30px',
-    width: 'auto'
-  };
 
   const addDislikeDoc = async () => {
     try {
@@ -38,18 +34,18 @@ export default function Dislikes({ likes, docId }) {
   };
 
   const addDislikeStyle = () => {
-    const commentDislikeIcon = document.querySelector(`li#${docId} div.dislikes>img`);
-    commentDislikeIcon.setAttribute('style', 'background-color: red; height: 30px; width: auto');
+    const commentDislikeIcon = document.querySelector(`li#${docId} img.dislikes`);
+    commentDislikeIcon.classList.add('dislikeActive');
   };
 
   const removeLikeStyle = () => {
-    const commentLikeIcon = document.querySelector(`li#${docId} div.likes>img`);
-    commentLikeIcon.setAttribute('style', 'height: 30px; width: auto');
+    const commentLikeIcon = document.querySelector(`li#${docId} img.likes`);
+    commentLikeIcon.classList.remove('likeActive');
   };
 
   const removeDislikeStyle = () => {
-    const commentDislikeIcon = document.querySelector(`li#${docId} div.dislikes>img`);
-    commentDislikeIcon.setAttribute('style', 'height: 30px; width: auto');
+    const commentDislikeIcon = document.querySelector(`li#${docId} img.dislikes`);
+    commentDislikeIcon.classList.remove('dislikeActive');
   };
 
   const checkUserDislikes = async () => {
@@ -150,14 +146,12 @@ export default function Dislikes({ likes, docId }) {
   }, []);
 
   return (
-    <div className="dislikes">
-      <img
-        src={dislikeIcon}
-        alt="A thumbs down icon"
-        style={style}
-        onClick={() => checkIfUserHasDisliked()}
-      />
-    </div>
+    <img
+      className="dislikes"
+      src={dislikeIcon}
+      alt="A thumbs down icon"
+      onClick={() => checkIfUserHasDisliked()}
+    />
   );
 }
 

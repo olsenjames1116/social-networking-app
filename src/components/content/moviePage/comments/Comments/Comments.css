@@ -1,0 +1,10 @@
+div.comments {
+  display: grid;
+  row-gap: 10px;
+}
+
+div.comments > h2 {
+  margin: 0;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: start;
+}

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { likeIcon } from '../../../../../images';
-import { db } from '../../../../../firebase';
+import { likeIcon } from '../../../../../../images';
+import { db } from '../../../../../../firebase';
 import {
   addDoc,
   collection,
@@ -15,18 +15,14 @@ import {
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeLike } from '../../../../../redux/state/commentsSlice';
+import { changeLike } from '../../../../../../redux/state/commentsSlice';
+import './Likes.css';
 
 export default function Likes({ likes, docId }) {
   const { id } = useParams();
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.comments.value);
   let likeIncrement = 1;
-
-  const style = {
-    height: '30px',
-    width: 'auto'
-  };
 
   const addLikeDoc = async () => {
     try {
@@ -38,18 +34,18 @@ export default function Likes({ likes, docId }) {
   };
 
   const addLikeStyle = () => {
-    const commentLikeIcon = document.querySelector(`li#${docId} div.likes>img`);
-    commentLikeIcon.setAttribute('style', 'background-color: green; height: 30px; width: auto');
+    const commentLikeIcon = document.querySelector(`li#${docId} img.likes`);
+    commentLikeIcon.classList.add('likeActive');
   };
 
   const removeDislikeStyle = () => {
-    const commentDislikeIcon = document.querySelector(`li#${docId} div.dislikes>img`);
-    commentDislikeIcon.setAttribute('style', 'height: 30px; width: auto');
+    const commentDislikeIcon = document.querySelector(`li#${docId} img.dislikes`);
+    commentDislikeIcon.classList.remove('dislikeActive');
   };
 
   const removeLikeStyle = () => {
-    const commentLikeIcon = document.querySelector(`li#${docId} div.likes>img`);
-    commentLikeIcon.setAttribute('style', 'height: 30px; width: auto');
+    const commentLikeIcon = document.querySelector(`li#${docId} img.likes`);
+    commentLikeIcon.classList.remove('likeActive');
   };
 
   const checkUserLikes = async () => {
@@ -150,14 +146,12 @@ export default function Likes({ likes, docId }) {
   }, []);
 
   return (
-    <div className="likes">
-      <img
-        src={likeIcon}
-        alt="A thumbs up icon"
-        style={style}
-        onClick={() => checkIfUserHasLiked()}
-      />
-    </div>
+    <img
+      className="likes"
+      src={likeIcon}
+      alt="A thumbs up icon"
+      onClick={() => checkIfUserHasLiked()}
+    />
   );
 }
 

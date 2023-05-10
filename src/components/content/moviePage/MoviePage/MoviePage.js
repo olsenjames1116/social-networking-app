@@ -1,11 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import MovieData from './movieData/MovieData/MovieData';
-import Comments from './comments/Comments';
+import MovieData from '../movieData/MovieData/MovieData';
+import Comments from '../comments/Comments/Comments';
 import { useSelector } from 'react-redux';
-import PageCover from './comments/popup/PageCover';
-import Popup from './comments/popup/Popup';
-import '../Content.css';
+import PageCover from '../comments/popup/PageCover';
+import Popup from '../comments/popup/Popup';
+import '../../Content.css';
+import './MoviePage.css';
 
 export default function MoviePage() {
   const { id } = useParams();

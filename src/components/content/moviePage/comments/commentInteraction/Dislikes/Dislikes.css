@@ -1,0 +1,12 @@
+img.dislikes {
+  height: 30px;
+  width: auto;
+}
+
+img.dislikes:hover {
+  filter: invert(52%) sepia(0%) saturate(1600%) hue-rotate(157deg) brightness(97%) contrast(94%);
+}
+
+.dislikeActive {
+  filter: invert(32%) sepia(94%) saturate(7099%) hue-rotate(355deg) brightness(123%) contrast(127%);
+}

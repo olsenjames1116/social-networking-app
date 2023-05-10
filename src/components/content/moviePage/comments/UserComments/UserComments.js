@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { db } from '../../../../firebase';
+import { db } from '../../../../../firebase';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
-import UserComment from './UserComment';
+import UserComment from '../UserComment/UserComment';
 import { useDispatch, useSelector } from 'react-redux';
-import { setComments } from '../../../../redux/state/commentsSlice';
+import { setComments } from '../../../../../redux/state/commentsSlice';
 import { useParams } from 'react-router-dom';
+import './UserComments.css';
 
 export default function UserComments() {
   const comments = useSelector((state) => state.comments.value);

@@ -1,9 +1,10 @@
 import React from 'react';
-import Likes from './Likes';
-import Dislikes from './Dislikes';
-import LikeCount from './LikeCount';
+import Likes from '../Likes/Likes';
+import Dislikes from '../Dislikes/Dislikes';
+import LikeCount from '../LikeCount';
 import PropTypes from 'prop-types';
-import DeleteIcon from './DeleteIcon';
+import DeleteIcon from '../DeleteIcon/DeleteIcon';
+import './CommentInteraction.css';
 
 export default function CommentInteraction({ likes, docId, userId }) {
   return (

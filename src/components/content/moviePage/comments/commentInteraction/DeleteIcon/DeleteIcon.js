@@ -1,20 +1,16 @@
 import React from 'react';
-import { deleteIcon } from '../../../../../images';
+import { deleteIcon } from '../../../../../../images';
 import PropTypes from 'prop-types';
 import { deleteDoc, doc, collection, query, orderBy, getDocs } from 'firebase/firestore';
-import { db } from '../../../../../firebase';
+import { db } from '../../../../../../firebase';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setComments } from '../../../../../redux/state/commentsSlice';
+import { setComments } from '../../../../../../redux/state/commentsSlice';
+import './DeleteIcon.css';
 
 export default function DeleteIcon({ docId }) {
   const { id } = useParams();
   const dispatch = useDispatch();
-
-  const style = {
-    height: '50px',
-    width: 'auto'
-  };
 
   const reloadComments = async () => {
     try {
@@ -42,7 +38,12 @@ export default function DeleteIcon({ docId }) {
   };
 
   return (
-    <img src={deleteIcon} alt="A trash can icon" style={style} onClick={() => deleteComment()} />
+    <img
+      className="delete"
+      src={deleteIcon}
+      alt="A trash can icon"
+      onClick={() => deleteComment()}
+    />
   );
 }
 

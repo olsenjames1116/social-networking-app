@@ -1,15 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './CommentUserInfo.css';
 
 export default function CommentUserInfo({ user, profilePic }) {
-  const style = {
-    height: '50px',
-    width: 'auto'
-  };
-
   return (
     <div className="commentUserInfo">
-      <img src={profilePic} style={style} alt="The user's profile photo" />
+      <img src={profilePic} alt="The user's profile photo" />
       <span>{user}</span>
     </div>
   );
