@@ -1,0 +1,12 @@
+div.movie {
+  display: grid;
+  padding: 10px;
+  gap: 10px;
+  grid-template-columns: auto auto;
+  grid-template-rows: 1fr auto auto auto auto auto;
+}
+
+div.movie > div.timeDate {
+  grid-area: 3 / 1 / 4 / 2;
+  justify-self: start;
+}

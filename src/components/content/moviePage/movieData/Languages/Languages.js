@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Languages.css';
 
 export default function Languages({ languages }) {
   const displayLanguages = () => {
@@ -8,12 +9,7 @@ export default function Languages({ languages }) {
     return languageNames.join(', ');
   };
 
-  return (
-    <p>
-      <span>Languages:</span>
-      <span>{displayLanguages()}</span>
-    </p>
-  );
+  return <p className="languages">Languages: {displayLanguages()}</p>;
 }
 
 Languages.propTypes = {

@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
-import MovieImage from '../../movie/MovieImage/MovieImage';
+import MovieImage from '../../../movie/MovieImage/MovieImage';
 import PropTypes from 'prop-types';
-import Title from '../../movie/Title/Title';
-import Score from '../../movie/Score/Score';
-import Runtime from './Runtime';
-import ReleaseDate from './ReleaseDate';
-import Overview from './Overview';
-import Genre from './Genre';
-import Languages from './Languages';
+import Title from '../../../movie/Title/Title';
+import Score from '../../../movie/Score/Score';
+import Runtime from '../Runtime';
+import ReleaseDate from '../ReleaseDate';
+import Overview from '../Overview/Overview';
+import Genre from '../Genre/Genre';
+import Languages from '../Languages/Languages';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMovie, clearMovie } from '../../../../redux/state/movieSlice';
+import { setMovie, clearMovie } from '../../../../../redux/state/movieSlice';
+import './MovieData.css';
 
 export default function MovieData({ id }) {
   const movie = useSelector((state) => state.movie.value);
@@ -40,8 +41,11 @@ export default function MovieData({ id }) {
       <MovieImage image={movie.poster_path} />
       <Title title={movie.title} />
       <Score score={movie.vote_average} count={movie.vote_count} />
-      <Runtime runtime={movie.runtime} />
-      <ReleaseDate date={movie.release_date} />
+      <div className="timeDate">
+        <Runtime runtime={movie.runtime} />
+        {' | '}
+        <ReleaseDate date={movie.release_date} />
+      </div>
       <Overview overview={movie.overview} />
       <Genre genres={movie.genres} />
       <Languages languages={movie.spoken_languages} />

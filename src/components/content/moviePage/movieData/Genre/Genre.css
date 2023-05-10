@@ -1,0 +1,5 @@
+p.genre {
+  margin: 0;
+  grid-area: 5 / 1 / 6 / 2;
+  justify-self: start;
+}

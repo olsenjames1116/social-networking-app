@@ -2,3 +2,8 @@ li.movie > p.score {
   margin: 0;
   text-align: center;
 }
+
+div.movie > p.score {
+  margin: 0;
+  justify-self: end;
+}

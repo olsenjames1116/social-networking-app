@@ -2,3 +2,10 @@ li.movie > img {
   height: 200px;
   width: auto;
 }
+
+div.movie > img {
+  height: 350px;
+  width: auto;
+  grid-area: 1 / 1 / 2 / 3;
+  justify-self: center;
+}

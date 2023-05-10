@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Genre.css';
 
 export default function Genre({ genres }) {
   const displayGenres = () => {
@@ -8,12 +9,7 @@ export default function Genre({ genres }) {
     return genreNames.join(', ');
   };
 
-  return (
-    <p>
-      <span>Genre:</span>
-      <span>{displayGenres()}</span>
-    </p>
-  );
+  return <p className="genre">Genre: {displayGenres()}</p>;
 }
 
 Genre.propTypes = {

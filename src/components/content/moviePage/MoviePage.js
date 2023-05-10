@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import MovieData from './movieData/MovieData';
+import MovieData from './movieData/MovieData/MovieData';
 import Comments from './comments/Comments';
 import { useSelector } from 'react-redux';
 import PageCover from './comments/popup/PageCover';
