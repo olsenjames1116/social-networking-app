@@ -3,4 +3,8 @@ li.comment {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  background-color: var(--accents);
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 5px 5px gray;
 }

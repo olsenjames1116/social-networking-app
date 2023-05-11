@@ -1,0 +1,18 @@
+div.popup > form {
+  display: flex;
+  flex-direction: column;
+}
+
+div.popup > form > button {
+  border: 0;
+  background-color: var(--secondaryTheme);
+  border-radius: 25px;
+  font-size: 1rem;
+  width: 100px;
+  height: 30px;
+  align-self: center;
+}
+
+div.popup > form > button:hover {
+  background-color: var(--tertiaryTheme);
+}

@@ -1,4 +1,4 @@
 img.arrow:hover {
-  background-color: gray;
+  background-color: var(--secondaryTheme);
   border-radius: 50px;
 }

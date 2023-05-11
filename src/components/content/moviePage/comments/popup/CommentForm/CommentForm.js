@@ -1,13 +1,14 @@
 import React from 'react';
-import CharacterCount from './CharacterCount';
+import CharacterCount from '../CharacterCount';
 import { useDispatch } from 'react-redux';
-import { setCharacterCount } from '../../../../../redux/state/characterCountSlice';
-import { hidePopup } from '../../../../../redux/state/popupSlice';
-import { resetCharacterCount } from '../../../../../redux/state/characterCountSlice';
-import { db } from '../../../../../firebase';
+import { setCharacterCount } from '../../../../../../redux/state/characterCountSlice';
+import { hidePopup } from '../../../../../../redux/state/popupSlice';
+import { resetCharacterCount } from '../../../../../../redux/state/characterCountSlice';
+import { db } from '../../../../../../firebase';
 import { useParams } from 'react-router-dom';
 import { collection, addDoc, getDocs, query, orderBy } from 'firebase/firestore';
-import { setComments } from '../../../../../redux/state/commentsSlice';
+import { setComments } from '../../../../../../redux/state/commentsSlice';
+import './CommentForm.css';
 
 export default function CommentForm() {
   const dispatch = useDispatch();

@@ -7,4 +7,6 @@ div.movie > p.title {
   margin: 0;
   grid-area: 2 / 1 / 3 / 2;
   justify-self: start;
+  font-size: 2rem;
+  font-weight: bold;
 }

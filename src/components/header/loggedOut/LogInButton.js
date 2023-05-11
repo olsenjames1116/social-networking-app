@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { logIn } from '../../../redux/state/isLoggedInSlice';
 import { db } from '../../../firebase';
 import { setDoc, collection, getDoc, doc } from 'firebase/firestore';
+import './LogInButton.css';
 
 export default function LogInButton() {
   const dispatch = useDispatch();

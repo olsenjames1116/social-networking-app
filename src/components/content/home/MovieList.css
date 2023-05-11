@@ -12,7 +12,7 @@ div.sliderContainer {
 ul.movieList {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 5px;
   display: flex;
   gap: 50px;
   overflow: hidden;
@@ -20,6 +20,7 @@ ul.movieList {
 
 ul.movieList > a {
   text-decoration: none;
+  color: var(--tertiaryTheme);
 }
 
 ul.movieList > a > li {

@@ -1,9 +1,15 @@
-li.movie > p.score {
-  margin: 0;
-  text-align: center;
+div.score {
+  justify-self: end;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
-div.movie > p.score {
+p.score {
   margin: 0;
-  justify-self: end;
+}
+
+img {
+  height: 25px;
+  width: auto;
 }

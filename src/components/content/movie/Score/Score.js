@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Score.css';
+import { starIcon } from '../../../../images';
 
 export default function Score({ score, count }) {
   const formatScore = () => {
@@ -8,7 +9,12 @@ export default function Score({ score, count }) {
     return `${roundedScore}/10 (${count})`;
   };
 
-  return <p className="score">{formatScore()}</p>;
+  return (
+    <div className="score">
+      <p className="score">{formatScore()}</p>
+      <img src={starIcon} alt="A star" />
+    </div>
+  );
 }
 
 Score.propTypes = {

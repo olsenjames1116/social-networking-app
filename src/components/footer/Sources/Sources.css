@@ -4,4 +4,9 @@ div.footer > p.sources {
 
 p.sources > a {
   text-decoration: none;
+  color: var(--secondaryTheme);
+}
+
+p.sources > a:hover {
+  color: var(--tertiaryTheme);
 }

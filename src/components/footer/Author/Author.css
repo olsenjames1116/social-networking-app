@@ -4,4 +4,9 @@ div.footer > p.author {
 
 p.author > a {
   text-decoration: none;
+  color: var(--secondaryTheme);
+}
+
+p.author > a:hover {
+  color: var(--tertiaryTheme);
 }

@@ -5,5 +5,7 @@ div.header {
   padding: 10px;
   position: sticky;
   top: 0;
-  background-color: white;
+  background-color: var(--primaryTheme);
+  color: var(--accents);
+  z-index: 1;
 }

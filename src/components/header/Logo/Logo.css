@@ -1,0 +1,15 @@
+div.logo {
+  display: flex;
+  align-items: center;
+}
+
+div.logo > img {
+  height: 100px;
+  width: auto;
+}
+
+div.logo > h1 {
+  margin: 0;
+  font-size: 3rem;
+  font-family: 'lobsterTwo', sans-serif;
+}

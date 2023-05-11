@@ -1,0 +1,9 @@
+div.popup > img {
+  height: 30px;
+  width: auto;
+  align-self: flex-end;
+}
+
+div.popup > img:hover {
+  filter: invert(52%) sepia(0%) saturate(1600%) hue-rotate(157deg) brightness(97%) contrast(94%);
+}

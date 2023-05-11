@@ -9,12 +9,12 @@ li.accountMenuIcon > img {
 }
 
 li.accountMenuIcon > img:hover {
-  background-color: rgb(170, 170, 170);
+  background-color: var(--secondaryTheme);
   border-radius: 50px;
   transition: background-color 1s;
 }
 
 li.accountMenuIcon > img.clicked {
-  background-color: gray;
+  background-color: var(--tertiaryTheme);
   border-radius: 50px;
 }

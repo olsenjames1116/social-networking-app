@@ -1,6 +1,6 @@
 import React from 'react';
 import UserImage from '../UserImage/UserImage';
-import UserName from '../UserName';
+import UserName from '../UserName/UserName';
 import AccountMenuIcon from '../AccountMenuIcon/AccountMenuIcon';
 import AccountMenu from '../AccountMenu/AccountMenu';
 import { useSelector } from 'react-redux';

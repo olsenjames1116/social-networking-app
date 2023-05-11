@@ -34,18 +34,21 @@ export default function Dislikes({ likes, docId }) {
   };
 
   const addDislikeStyle = () => {
-    const commentDislikeIcon = document.querySelector(`li#${docId} img.dislikes`);
-    commentDislikeIcon.classList.add('dislikeActive');
+    const comment = document.getElementById(`${docId}`);
+    const commentDislikeElement = comment.childNodes[3].childNodes[2];
+    commentDislikeElement.classList.add('dislikeActive');
   };
 
   const removeLikeStyle = () => {
-    const commentLikeIcon = document.querySelector(`li#${docId} img.likes`);
-    commentLikeIcon.classList.remove('likeActive');
+    const comment = document.getElementById(`${docId}`);
+    const commentLikeElement = comment.childNodes[3].childNodes[0];
+    commentLikeElement.classList.remove('likeActive');
   };
 
   const removeDislikeStyle = () => {
-    const commentDislikeIcon = document.querySelector(`li#${docId} img.dislikes`);
-    commentDislikeIcon.classList.remove('dislikeActive');
+    const comment = document.getElementById(`${docId}`);
+    const commentDislikeElement = comment.childNodes[3].childNodes[2];
+    commentDislikeElement.classList.remove('dislikeActive');
   };
 
   const checkUserDislikes = async () => {

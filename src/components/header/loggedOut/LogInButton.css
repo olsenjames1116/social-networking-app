@@ -1,6 +1,4 @@
-div.comments > button {
-  grid-area: 1 / 2 / 2 / 3;
-  justify-self: end;
+div.account > button {
   border: 0;
   background-color: white;
   border-radius: 25px;
@@ -9,6 +7,6 @@ div.comments > button {
   font-size: 1rem;
 }
 
-div.comments > button:hover {
+div.account > button:hover {
   background-color: var(--secondaryTheme);
 }
