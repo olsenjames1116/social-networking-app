@@ -3,6 +3,10 @@ div.popup > form {
   flex-direction: column;
 }
 
+div.popup > form > textarea {
+  resize: none;
+}
+
 div.popup > form > button {
   border: 0;
   background-color: var(--secondaryTheme);

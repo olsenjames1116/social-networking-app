@@ -4,6 +4,7 @@ import { hideMenu } from '../../../redux/state/accountMenuSlice';
 import { logo } from '../../../images';
 import './Logo.css';
 
+// Represents the logo displayed in the header
 export default function Logo() {
   const dispatch = useDispatch();
 

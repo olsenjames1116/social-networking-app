@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { hideMenu } from '../../../../redux/state/accountMenuSlice';
 import './UserImage.css';
 
+// Represents the user's image that is displayed if a user is logged in
 export default function UserImage() {
   const dispatch = useDispatch();
 

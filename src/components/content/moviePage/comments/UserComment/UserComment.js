@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import CommentDate from '../CommentDate';
 import './UserComment.css';
 
+// Represents each comments displayed in the comment section of each movie page
 export default function UserComment({ comment }) {
   const isLoggedIn = useSelector((state) => state.isLoggedIn.value);
 

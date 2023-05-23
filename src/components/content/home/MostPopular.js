@@ -12,6 +12,7 @@ import {
   resetClicks
 } from '../../../redux/state/mostPopularClicksSlice';
 
+// Represents the most popular movies from the API call to TMDB
 export default function MostPopular() {
   const mostPopular = useSelector((state) => state.mostPopular.value);
   const mostPopularClicks = useSelector((state) => state.mostPopularClicks.value);
@@ -26,6 +27,7 @@ export default function MostPopular() {
         );
         const data = await response.json();
 
+        // Only retrieve the first 10 movies from the API call
         dispatch(setMostPopular(data.results.slice(0, 10)));
       } catch (error) {
         console.log(error);

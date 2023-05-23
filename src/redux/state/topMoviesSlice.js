@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Stores the top movies from the API call to TMDB
 export const topMoviesSlice = createSlice({
   name: 'topMovies',
   initialState: {

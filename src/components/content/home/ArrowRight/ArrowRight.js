@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import './ArrowRight.css';
 
+// Represents the arroww pointing right next to the movies on the homepage
 export default function ArrowRight({ clicks, incrementClicks, resetClicks, movieElements }) {
   const dispatch = useDispatch();
 
+  // Slides movies to the right
   const loadMovie = () => {
     movieElements.forEach((element) => {
       element.style.transform = `translateX(${-100 * clicks}%)`;
@@ -16,11 +18,13 @@ export default function ArrowRight({ clicks, incrementClicks, resetClicks, movie
   useEffect(() => {
     loadMovie();
 
+    // Reset the slider if the user attempts to slide right more than allowed
     if (clicks > movieElements.length - 1) {
       dispatch(resetClicks());
     }
   }, [clicks]);
 
+  // Reached when the arrow is clicked
   const slideForward = () => {
     dispatch(incrementClicks());
   };

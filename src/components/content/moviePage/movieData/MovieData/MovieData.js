@@ -12,10 +12,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setMovie, clearMovie } from '../../../../../redux/state/movieSlice';
 import './MovieData.css';
 
+// Represents the movie data section for the movie page
 export default function MovieData({ id }) {
   const movie = useSelector((state) => state.movie.value);
   const dispatch = useDispatch();
 
+  // Clear out the previously stored movie and retrieve the new movie
   useEffect(() => {
     dispatch(clearMovie());
 

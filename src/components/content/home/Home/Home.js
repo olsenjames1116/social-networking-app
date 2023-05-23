@@ -7,6 +7,7 @@ import './Home.css';
 import { useDispatch } from 'react-redux';
 import { hideMenu } from '../../../../redux/state/accountMenuSlice';
 
+// Represents the homepage
 export default function Home() {
   const dispatch = useDispatch();
 

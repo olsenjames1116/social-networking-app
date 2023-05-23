@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import DeleteIcon from '../DeleteIcon/DeleteIcon';
 import './CommentInteraction.css';
 
+// Represents the interactive parts of each comment
 export default function CommentInteraction({ likes, docId, userId }) {
   return (
     <div className="commentInteraction">

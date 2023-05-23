@@ -5,6 +5,7 @@ import Score from './Score/Score';
 import Title from './Title/Title';
 import './Movie.css';
 
+// Represents the main information for each movie card on the homepage
 export default function Movie({ movie }) {
   return (
     <li className="movie">

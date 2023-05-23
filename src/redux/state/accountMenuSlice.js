@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Hides and displays the account menu
 export const accountMenuSlice = createSlice({
   name: 'accountMenu',
   initialState: {

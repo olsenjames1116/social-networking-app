@@ -18,12 +18,14 @@ import { db } from '../../../../../../firebase';
 import { useParams } from 'react-router-dom';
 import './Dislikes.css';
 
+// Represents the dislike icon for each comment
 export default function Dislikes({ likes, docId }) {
   const { id } = useParams();
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.comments.value);
   let likeIncrement = 1;
 
+  // Store a new document for a dislike from the user
   const addDislikeDoc = async () => {
     try {
       const docRef = collection(db, `users/${localStorage.getItem('id')}/dislikes`);
@@ -33,36 +35,44 @@ export default function Dislikes({ likes, docId }) {
     }
   };
 
+  // Give style to the dislike icon so the user can see what they have interacted with
   const addDislikeStyle = () => {
     const comment = document.getElementById(`${docId}`);
     const commentDislikeElement = comment.childNodes[3].childNodes[2];
     commentDislikeElement.classList.add('dislikeActive');
   };
 
+  /* Remove style from like icon when the dislike icon is clicked so the user can see their like
+  has been removed */
   const removeLikeStyle = () => {
     const comment = document.getElementById(`${docId}`);
     const commentLikeElement = comment.childNodes[3].childNodes[0];
     commentLikeElement.classList.remove('likeActive');
   };
 
+  /* Remove style from dislike icon when the same dislike has been clicked again to show the user
+  that dislike has been removed */
   const removeDislikeStyle = () => {
     const comment = document.getElementById(`${docId}`);
     const commentDislikeElement = comment.childNodes[3].childNodes[2];
     commentDislikeElement.classList.remove('dislikeActive');
   };
 
+  // Check if the user has any dislikes
   const checkUserDislikes = async () => {
     try {
       const docRef = collection(db, `users/${localStorage.getItem('id')}/dislikes`);
       const docQuery = query(docRef, where('postId', '==', docId));
       const docSnap = await getDocs(docQuery);
 
+      // Add style to any previously stored dislikes
       if (!docSnap.empty) addDislikeStyle();
     } catch (error) {
       console.log(error);
     }
   };
 
+  // Change the total number of likes on the like count for a comment when the dislike icon is clicked
   const updateDislikes = async () => {
     try {
       const docRef = doc(db, `movies/${id}/comments/${docId}`);
@@ -81,6 +91,7 @@ export default function Dislikes({ likes, docId }) {
     }
   };
 
+  // Remove a like document from firestore when a user has clicked the dislike icon for a comment
   const updateLikes = async () => {
     const docRef = collection(db, `users/${localStorage.getItem('id')}/likes`);
     const docQuery = query(docRef, where('postId', '==', docId));
@@ -90,6 +101,8 @@ export default function Dislikes({ likes, docId }) {
     removeLikeStyle();
   };
 
+  /* Check if a user has liked a post, if so the document needs to be deleted and the likes 
+  need to be decremented by more than one to balance out a like with a dislike */
   const checkIfUserHasLiked = async () => {
     try {
       const docRef = collection(db, `users/${localStorage.getItem('id')}/likes`);
@@ -105,6 +118,8 @@ export default function Dislikes({ likes, docId }) {
     }
   };
 
+  /* Remove a dislike's style, delete the document associated with the dislike and update the 
+  number of likes on a comment when the same dislike has been clicked again */
   const removeDislike = async () => {
     try {
       const dislikeDocRef = collection(db, `users/${localStorage.getItem('id')}/dislikes`);
@@ -127,6 +142,7 @@ export default function Dislikes({ likes, docId }) {
     }
   };
 
+  // Check if a user has previously disliked the comment
   const checkIfUserHasDisliked = async () => {
     try {
       const docRef = collection(db, `users/${localStorage.getItem('id')}/dislikes`);

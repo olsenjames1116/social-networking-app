@@ -9,6 +9,7 @@ import './App.css';
 export default function App() {
   const dispatch = useDispatch();
 
+  // Checks if a user's info is stored already so the user will stay logged in
   const checkLogIn = () => {
     localStorage.getItem('id') && dispatch(logIn());
   };

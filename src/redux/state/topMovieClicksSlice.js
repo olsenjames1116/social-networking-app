@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Stores the number of clicks on the sliders for the top movies section
 export const topMovieClicksSlice = createSlice({
   name: 'topMovieClicks',
   initialState: {

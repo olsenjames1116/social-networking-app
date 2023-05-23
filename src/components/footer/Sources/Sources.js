@@ -1,6 +1,7 @@
 import React from 'react';
 import './Sources.css';
 
+// Represents the sources credit in the footer
 export default function Sources() {
   return (
     <p className="sources">

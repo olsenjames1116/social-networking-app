@@ -7,9 +7,11 @@ import { db } from '../../../firebase';
 import { setDoc, collection, getDoc, doc } from 'firebase/firestore';
 import './LogInButton.css';
 
+// Represents the login button that is displayed if a user is logged out
 export default function LogInButton() {
   const dispatch = useDispatch();
 
+  // Checks if the user is a new user. Saves their info if so
   const validateNewUser = async () => {
     try {
       const docRef = doc(db, `users/${localStorage.getItem('id')}`);
@@ -21,6 +23,7 @@ export default function LogInButton() {
     }
   };
 
+  // Stores a user's info in firebase if they are a new user
   const storeNewUser = async () => {
     console.log('new user');
     try {
@@ -35,6 +38,7 @@ export default function LogInButton() {
     }
   };
 
+  // Redirects the user to Google Auth to login
   const signInWithGoogle = async () => {
     try {
       const response = await signInWithPopup(auth, provider);

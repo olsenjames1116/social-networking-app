@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Stores the number of clicks on the sliders for the most popular section
 export const mostPopularClicksSlice = createSlice({
   name: 'mostPopularClicks',
   initialState: {

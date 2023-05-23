@@ -12,6 +12,7 @@ import {
   resetClicks
 } from '../../../redux/state/topMovieClicksSlice';
 
+// Represents the top movies from the API call to TMDB
 export default function TopMovies() {
   const topMovies = useSelector((state) => state.topMovies.value);
   const topMoviesClicks = useSelector((state) => state.topMovieClicks.value);
@@ -26,6 +27,7 @@ export default function TopMovies() {
         );
         const data = await response.json();
 
+        // Only retrieve the first 10 movies from the API call
         dispatch(setTopMovies(data.results.slice(0, 10)));
       } catch (error) {
         console.log(error);

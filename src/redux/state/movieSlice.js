@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Stores data for the currently selected movie from the home page
 export const movieSlice = createSlice({
   name: 'movie',
   initialState: {

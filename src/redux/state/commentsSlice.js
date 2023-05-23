@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Stores comments for the current movie page
 export const commentsSlice = createSlice({
   name: 'comments',
   initialState: {

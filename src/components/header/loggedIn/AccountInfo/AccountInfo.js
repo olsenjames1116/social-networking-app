@@ -6,6 +6,7 @@ import AccountMenu from '../AccountMenu/AccountMenu';
 import { useSelector } from 'react-redux';
 import './AccountInfo.css';
 
+// Displays the user's account info if a user is logged in
 export default function AccountInfo() {
   const accountMenu = useSelector((state) => state.accountMenu.display);
 

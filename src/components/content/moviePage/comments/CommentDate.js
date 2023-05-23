@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Represents the comment date for each comment
 export default function CommentDate({ date }) {
+  // Converts month from number to a month abbreviation
   const convertMonth = (month) => {
     const months = [
       'Jan',
@@ -21,6 +23,7 @@ export default function CommentDate({ date }) {
     return months[month - 1];
   };
 
+  // Format date for the user to make it easier to read
   const formatDate = () => {
     const dateString = date.toString();
     const year = dateString.substring(0, 4);

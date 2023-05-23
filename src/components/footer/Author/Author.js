@@ -1,6 +1,7 @@
 import React from 'react';
 import './Author.css';
 
+// Represents the author credit in the footer
 export default function Author() {
   return (
     <p className="author">

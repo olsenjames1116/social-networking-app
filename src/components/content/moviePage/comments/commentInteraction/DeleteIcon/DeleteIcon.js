@@ -8,10 +8,13 @@ import { useDispatch } from 'react-redux';
 import { setComments } from '../../../../../../redux/state/commentsSlice';
 import './DeleteIcon.css';
 
+// Represents that delete icon in each of the user's comments
 export default function DeleteIcon({ docId }) {
   const { id } = useParams();
   const dispatch = useDispatch();
 
+  // Retrieve and reload comments then store them in state
+  // Allows for realtime updates in state to reflect storage
   const reloadComments = async () => {
     try {
       const docRef = collection(db, `movies/${id}/comments`);
@@ -19,6 +22,7 @@ export default function DeleteIcon({ docId }) {
       const docSnap = await getDocs(docQuery);
       const commentData = [];
 
+      // Give each comment a document ID in state to access each object easily
       docSnap.forEach((doc) => {
         const docObject = Object.assign({ docId: doc.id }, doc.data());
         commentData.push(docObject);
@@ -30,6 +34,7 @@ export default function DeleteIcon({ docId }) {
     }
   };
 
+  // Delete a comment from firestore when the delete icon is clicked
   const deleteComment = async () => {
     const commentRef = doc(db, `movies/${id}/comments/${docId}`);
     await deleteDoc(commentRef);

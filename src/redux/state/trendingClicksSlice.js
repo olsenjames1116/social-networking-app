@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Stores the number of clicks on the sliders for the trending movies section
 export const trendingClicksSlice = createSlice({
   name: 'trendingClicks',
   initialState: {

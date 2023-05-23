@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Stores the character count for a new comment
 export const characterCountSlice = createSlice({
   name: 'characterCount',
   initialState: {

@@ -12,6 +12,7 @@ import {
   resetClicks
 } from '../../../redux/state/trendingClicksSlice';
 
+// Represents the trending movies from the API call to TMDB
 export default function Trending() {
   const trending = useSelector((state) => state.trending.value);
   const trendingClicks = useSelector((state) => state.trendingClicks.value);
@@ -26,6 +27,7 @@ export default function Trending() {
         );
         const data = await response.json();
 
+        // Only retrieve the first 10 movies from the API call
         dispatch(setTrending(data.results.slice(0, 10)));
       } catch (error) {
         console.log(error);

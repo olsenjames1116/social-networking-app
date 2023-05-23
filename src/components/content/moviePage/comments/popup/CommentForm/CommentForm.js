@@ -10,14 +10,12 @@ import { collection, addDoc, getDocs, query, orderBy } from 'firebase/firestore'
 import { setComments } from '../../../../../../redux/state/commentsSlice';
 import './CommentForm.css';
 
+// Represents the form on the popup for new comments
 export default function CommentForm() {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const style = {
-    resize: 'none'
-  };
-
+  // Counts the number of characters the user has input and sets it in state
   const countCharacters = () => {
     const commentInput = document.querySelector('textarea#comment');
     const commentLength = commentInput.value.length;
@@ -25,17 +23,21 @@ export default function CommentForm() {
     dispatch(setCharacterCount(commentLength));
   };
 
+  // Reset validity for the form when the user begins typing in the textarea again
   const resetValidity = () => {
     const commentInput = document.querySelector('textarea#comment');
 
     commentInput.setCustomValidity('');
   };
 
+  // Resets validity and changes the character count when the user types in the textarea
   const handleChange = () => {
     countCharacters();
     resetValidity();
   };
 
+  /* Retrieves and formats the date for a new posted comment to allow easier manipulation when displaying 
+  the date for each comment */
   const formatDate = () => {
     const dateObj = new Date();
 
@@ -47,6 +49,7 @@ export default function CommentForm() {
     return parseInt(dateString);
   };
 
+  // Reloads comments when a new comment has been posted to reflect what is stored
   const reloadComments = async () => {
     try {
       const docRef = collection(db, `movies/${id}/comments`);
@@ -54,6 +57,7 @@ export default function CommentForm() {
       const docSnap = await getDocs(docQuery);
       const commentData = [];
 
+      // Give each document a unique identifier in state from its document ID
       docSnap.forEach((doc) => {
         const docObject = Object.assign({ docId: doc.id }, doc.data());
         commentData.push(docObject);
@@ -65,6 +69,7 @@ export default function CommentForm() {
     }
   };
 
+  // Store a new comment as a document in firestore
   const postComment = async (comment) => {
     try {
       const dateNum = formatDate();
@@ -87,6 +92,8 @@ export default function CommentForm() {
     }
   };
 
+  /* Clears any previous input when a comment is posted to give the user a clean slate for any 
+  future comments */
   const clearInput = () => {
     const popupTextarea = document.querySelector('textarea#comment');
     popupTextarea.textContent = '';
@@ -95,8 +102,8 @@ export default function CommentForm() {
     dispatch(hidePopup());
   };
 
+  // Display error message when there is a validity issue
   const displayErrorMessage = () => {
-    console.log('invalid input');
     const commentInput = document.querySelector('textarea#comment');
 
     if (commentInput.validity.valueMissing) {
@@ -105,6 +112,7 @@ export default function CommentForm() {
     }
   };
 
+  // Validate comment input
   const validateComment = (event) => {
     event.preventDefault();
 
@@ -114,7 +122,6 @@ export default function CommentForm() {
     const form = document.querySelector('form');
 
     if (form.checkValidity()) {
-      // console.log(comment);
       postComment(comment);
       clearInput();
     } else {
@@ -131,7 +138,6 @@ export default function CommentForm() {
         cols="50"
         maxLength="250"
         required
-        style={style}
         onChange={() => handleChange()}
       />
       <CharacterCount />
