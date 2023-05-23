@@ -25,7 +25,6 @@ export default function LogInButton() {
 
   // Stores a user's info in firebase if they are a new user
   const storeNewUser = async () => {
-    console.log('new user');
     try {
       const data = {
         name: localStorage.getItem('name')
