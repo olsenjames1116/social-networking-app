@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/social-networking-app/static/css/main.1e53cdfd.css",
+    "main.js": "/social-networking-app/static/js/main.2891bd3d.js",
+    "static/media/lobstertwo-bold-webfont.woff": "/social-networking-app/static/media/lobstertwo-bold-webfont.7f2b6f5c012cc765bed7.woff",
+    "static/media/lobstertwo-bold-webfont.woff2": "/social-networking-app/static/media/lobstertwo-bold-webfont.23be43fd4607d62a0663.woff2",
+    "index.html": "/social-networking-app/index.html",
+    "static/media/close.svg": "/social-networking-app/static/media/close.7bbf47780fb42aed09bf89e263a9d690.svg",
+    "static/media/like.svg": "/social-networking-app/static/media/like.fd5a12d1e2119967de41bb404c48c371.svg",
+    "static/media/dislike.svg": "/social-networking-app/static/media/dislike.9ca87f4629d91fce7441f979e14221a4.svg",
+    "static/media/arrowLeft.svg": "/social-networking-app/static/media/arrowLeft.b232bd098bdf82e5c4f38468c77fad1e.svg",
+    "static/media/arrowRight.svg": "/social-networking-app/static/media/arrowRight.9a2fffc14da6d8ba372ce4e093378daf.svg",
+    "static/media/delete.svg": "/social-networking-app/static/media/delete.de0bb67a90c5085462246310b3b0f555.svg",
+    "static/media/menu.svg": "/social-networking-app/static/media/menu.2d4061552fac064ed07690e82d099e1d.svg",
+    "main.1e53cdfd.css.map": "/social-networking-app/static/css/main.1e53cdfd.css.map",
+    "main.2891bd3d.js.map": "/social-networking-app/static/js/main.2891bd3d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1e53cdfd.css",
+    "static/js/main.2891bd3d.js"
+  ]
+}
