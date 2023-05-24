@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/social-networking-app/static/css/main.1e53cdfd.css",
-    "main.js": "/social-networking-app/static/js/main.2891bd3d.js",
+    "main.js": "/social-networking-app/static/js/main.670eee72.js",
     "static/media/lobstertwo-bold-webfont.woff": "/social-networking-app/static/media/lobstertwo-bold-webfont.7f2b6f5c012cc765bed7.woff",
     "static/media/lobstertwo-bold-webfont.woff2": "/social-networking-app/static/media/lobstertwo-bold-webfont.23be43fd4607d62a0663.woff2",
     "index.html": "/social-networking-app/index.html",
@@ -13,10 +13,10 @@
     "static/media/delete.svg": "/social-networking-app/static/media/delete.de0bb67a90c5085462246310b3b0f555.svg",
     "static/media/menu.svg": "/social-networking-app/static/media/menu.2d4061552fac064ed07690e82d099e1d.svg",
     "main.1e53cdfd.css.map": "/social-networking-app/static/css/main.1e53cdfd.css.map",
-    "main.2891bd3d.js.map": "/social-networking-app/static/js/main.2891bd3d.js.map"
+    "main.670eee72.js.map": "/social-networking-app/static/js/main.670eee72.js.map"
   },
   "entrypoints": [
     "static/css/main.1e53cdfd.css",
-    "static/js/main.2891bd3d.js"
+    "static/js/main.670eee72.js"
   ]
 }
