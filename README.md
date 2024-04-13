@@ -29,3 +29,5 @@ This project highlights:
 - API calls
 - Routing
 - Conditional rendering
+
+© 2024 James Olsen. All Rights Reserved.
