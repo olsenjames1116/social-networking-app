@@ -3,7 +3,7 @@ import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCAblQYEa3NzfNbgSmp1gJWR-ijqMMr64U',
+  apiKey: process.env.REACT_APP_API_KEY,
   authDomain: 'moviereviews-dd11d.firebaseapp.com',
   projectId: 'moviereviews-dd11d',
   storageBucket: 'moviereviews-dd11d.appspot.com',

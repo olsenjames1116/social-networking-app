@@ -24,3 +24,5 @@ yarn-error.log*
 
 plan.txt
 sources.txt
+
+.env
